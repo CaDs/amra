@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Animated, {
   Extrapolation,
@@ -5,7 +6,8 @@ import Animated, {
   type SharedValue,
   useAnimatedStyle,
 } from "react-native-reanimated";
-import { palette, space, type } from "../../theme/tokens";
+import { space, type, type Palette } from "../../theme/tokens";
+import { useTheme } from "../../theme/useTheme";
 import { Hairline } from "../primitives/Hairline";
 
 type Props = {
@@ -17,6 +19,9 @@ type Props = {
 };
 
 export function DetailHero({ title, subTitle, kicker, scrollY, height }: Props) {
+  const { palette } = useTheme();
+  const styles = useMemo(() => makeStyles(palette), [palette]);
+
   const heroStyle = useAnimatedStyle(() => {
     const opacity = interpolate(scrollY.value, [0, height * 0.6, height], [1, 0.5, 0], Extrapolation.CLAMP);
     const translateY = interpolate(scrollY.value, [0, height], [0, -height * 0.3], Extrapolation.CLAMP);
@@ -35,30 +40,31 @@ export function DetailHero({ title, subTitle, kicker, scrollY, height }: Props) 
   );
 }
 
-const styles = StyleSheet.create({
-  outer: {
-    width: "100%",
-    alignItems: "flex-start",
-    justifyContent: "flex-end",
-    paddingHorizontal: space.xl,
-    paddingBottom: space.huge,
-  },
-  inner: {
-    alignItems: "flex-start",
-    gap: space.xs,
-  },
-  kicker: {
-    ...type.label,
-    color: palette.textMuted,
-    marginBottom: space.sm,
-  },
-  title: {
-    ...type.display,
-    color: palette.textPrimary,
-  },
-  subtitle: {
-    ...type.subtitle,
-    color: palette.textSecondary,
-    marginTop: space.xs,
-  },
-});
+const makeStyles = (palette: Palette) =>
+  StyleSheet.create({
+    outer: {
+      width: "100%",
+      alignItems: "flex-start",
+      justifyContent: "flex-end",
+      paddingHorizontal: space.xl,
+      paddingBottom: space.huge,
+    },
+    inner: {
+      alignItems: "flex-start",
+      gap: space.xs,
+    },
+    kicker: {
+      ...type.label,
+      color: palette.textMuted,
+      marginBottom: space.sm,
+    },
+    title: {
+      ...type.display,
+      color: palette.textPrimary,
+    },
+    subtitle: {
+      ...type.subtitle,
+      color: palette.textSecondary,
+      marginTop: space.xs,
+    },
+  });

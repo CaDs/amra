@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { Pressable, StyleSheet, View } from "react-native";
 import Animated, {
   Extrapolation,
@@ -6,7 +7,9 @@ import Animated, {
   useAnimatedStyle,
   useDerivedValue,
 } from "react-native-reanimated";
-import { palette, space, type } from "../../theme/tokens";
+import { space, type, type Palette } from "../../theme/tokens";
+import { useTheme } from "../../theme/useTheme";
+import { useHaptics } from "../../hooks/useHaptics";
 
 export type Section = { id: string; label: string; offsetY: number };
 
@@ -17,6 +20,10 @@ type Props = {
 };
 
 export function SectionNav({ sections, scrollY, onTap }: Props) {
+  const { palette } = useTheme();
+  const haptics = useHaptics();
+  const styles = useMemo(() => makeStyles(palette), [palette]);
+
   if (sections.length === 0) return null;
   return (
     <View style={[styles.rail, { pointerEvents: "box-none" }]}>
@@ -27,7 +34,11 @@ export function SectionNav({ sections, scrollY, onTap }: Props) {
           section={section}
           sections={sections}
           scrollY={scrollY}
-          onPress={() => onTap(section.offsetY)}
+          onPress={() => {
+            haptics.selection();
+            onTap(section.offsetY);
+          }}
+          styles={styles}
         />
       ))}
     </View>
@@ -40,12 +51,14 @@ function SectionDot({
   sections,
   scrollY,
   onPress,
+  styles,
 }: {
   index: number;
   section: Section;
   sections: Section[];
   scrollY: SharedValue<number>;
   onPress: () => void;
+  styles: ReturnType<typeof makeStyles>;
 }) {
   const activeIndex = useDerivedValue(() => {
     const y = scrollY.value;
@@ -85,30 +98,31 @@ function SectionDot({
   );
 }
 
-const styles = StyleSheet.create({
-  rail: {
-    position: "absolute",
-    right: space.md,
-    top: "32%",
-    bottom: "32%",
-    width: 140,
-    alignItems: "flex-end",
-    justifyContent: "center",
-    gap: space.md,
-  },
-  row: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: space.sm,
-    height: 16,
-  },
-  label: {
-    ...type.label,
-    color: palette.textSecondary,
-  },
-  dot: {
-    height: 2,
-    backgroundColor: palette.dener,
-    borderRadius: 1,
-  },
-});
+const makeStyles = (palette: Palette) =>
+  StyleSheet.create({
+    rail: {
+      position: "absolute",
+      right: space.md,
+      top: "32%",
+      bottom: "32%",
+      width: 140,
+      alignItems: "flex-end",
+      justifyContent: "center",
+      gap: space.md,
+    },
+    row: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: space.sm,
+      height: 16,
+    },
+    label: {
+      ...type.label,
+      color: palette.textSecondary,
+    },
+    dot: {
+      height: 2,
+      backgroundColor: palette.dener,
+      borderRadius: 1,
+    },
+  });

@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import Animated, {
   Extrapolation,
@@ -7,7 +8,9 @@ import Animated, {
   useSharedValue,
 } from "react-native-reanimated";
 import { useRouter } from "expo-router";
-import { palette, space, type } from "../../theme/tokens";
+import { space, type, type Palette } from "../../theme/tokens";
+import { useTheme } from "../../theme/useTheme";
+import { useHaptics } from "../../hooks/useHaptics";
 import type { Entry, Tome } from "../../types/lore";
 import { Hairline } from "../primitives/Hairline";
 import { Callouts } from "./Callouts";
@@ -22,6 +25,9 @@ type Props = {
 
 export function SubEntryView({ entry, tome, index }: Props) {
   const router = useRouter();
+  const { palette } = useTheme();
+  const haptics = useHaptics();
+  const styles = useMemo(() => makeStyles(palette), [palette]);
   const { height } = useResponsive();
   const scrollY = useSharedValue(0);
   const onScroll = useAnimatedScrollHandler((e) => {
@@ -39,7 +45,10 @@ export function SubEntryView({ entry, tome, index }: Props) {
     <View style={styles.root}>
       <Pressable
         style={styles.backButton}
-        onPress={() => router.back()}
+        onPress={() => {
+          haptics.light();
+          router.back();
+        }}
         accessibilityRole="button"
         accessibilityLabel={`Back to ${tome.overview.title}`}
       >
@@ -119,38 +128,39 @@ export function SubEntryView({ entry, tome, index }: Props) {
   );
 }
 
-const styles = StyleSheet.create({
-  root: { flex: 1, backgroundColor: palette.bg },
-  scroll: { flex: 1 },
-  content: { paddingBottom: space.giant, alignItems: "center" },
-  measure: { width: "100%", maxWidth: 760 },
-  backButton: {
-    position: "absolute",
-    top: space.huge,
-    left: space.lg,
-    zIndex: 5,
-    paddingHorizontal: space.md,
-    paddingVertical: space.xs,
-  },
-  backLabel: { ...type.label, color: palette.textMuted },
-  heroOuter: {
-    width: "100%",
-    alignItems: "flex-start",
-    justifyContent: "flex-end",
-    paddingHorizontal: space.xl,
-    paddingBottom: space.huge,
-  },
-  heroInner: { alignItems: "flex-start", gap: space.xs },
-  kicker: { ...type.label, color: palette.textMuted, marginBottom: space.sm },
-  title: { ...type.hero, color: palette.textPrimary },
-  subtitle: { ...type.subtitle, color: palette.textSecondary, marginTop: space.xs },
-  section: {
-    paddingHorizontal: space.xl,
-    paddingVertical: space.xxl,
-    gap: space.md,
-  },
-  sectionLabel: { ...type.label, color: palette.textMuted },
-  prose: { ...type.bodyLg, color: palette.textPrimary },
-  footer: { alignItems: "center", paddingVertical: space.giant, gap: space.md },
-  footerLabel: { ...type.label, color: palette.textFaint },
-});
+const makeStyles = (palette: Palette) =>
+  StyleSheet.create({
+    root: { flex: 1, backgroundColor: palette.bg },
+    scroll: { flex: 1 },
+    content: { paddingBottom: space.giant, alignItems: "center" },
+    measure: { width: "100%", maxWidth: 760 },
+    backButton: {
+      position: "absolute",
+      top: space.huge,
+      left: space.lg,
+      zIndex: 5,
+      paddingHorizontal: space.md,
+      paddingVertical: space.xs,
+    },
+    backLabel: { ...type.label, color: palette.textMuted },
+    heroOuter: {
+      width: "100%",
+      alignItems: "flex-start",
+      justifyContent: "flex-end",
+      paddingHorizontal: space.xl,
+      paddingBottom: space.huge,
+    },
+    heroInner: { alignItems: "flex-start", gap: space.xs },
+    kicker: { ...type.label, color: palette.textMuted, marginBottom: space.sm },
+    title: { ...type.hero, color: palette.textPrimary },
+    subtitle: { ...type.subtitle, color: palette.textSecondary, marginTop: space.xs },
+    section: {
+      paddingHorizontal: space.xl,
+      paddingVertical: space.xxl,
+      gap: space.md,
+    },
+    sectionLabel: { ...type.label, color: palette.textMuted },
+    prose: { ...type.bodyLg, color: palette.textPrimary },
+    footer: { alignItems: "center", paddingVertical: space.giant, gap: space.md },
+    footerLabel: { ...type.label, color: palette.textFaint },
+  });

@@ -1,12 +1,11 @@
-import { useCallback, useMemo, useRef } from "react";
-import { StyleSheet, View } from "react-native";
+import { useCallback, useRef, useState } from "react";
+import { LayoutChangeEvent, StyleSheet, View } from "react-native";
 import Animated, {
   useAnimatedScrollHandler,
   useSharedValue,
 } from "react-native-reanimated";
 import { useRouter } from "expo-router";
-import { useResponsive } from "../../hooks/useResponsive";
-import { palette } from "../../theme/tokens";
+import { useTheme } from "../../theme/useTheme";
 import type { HomeSpread as HomeSpreadData } from "../../types/lore";
 import { HeroSpread } from "./HeroSpread";
 import { PageIndicator } from "./PageIndicator";
@@ -17,8 +16,8 @@ type Props = {
 
 export function HomeTome({ spreads }: Props) {
   const router = useRouter();
-  const { height } = useResponsive();
-  const pageHeight = height;
+  const { palette } = useTheme();
+  const [pageHeight, setPageHeight] = useState<number | null>(null);
   const scrollY = useSharedValue(0);
   const scrollRef = useRef<Animated.ScrollView>(null);
 
@@ -37,35 +36,42 @@ export function HomeTome({ spreads }: Props) {
     [router],
   );
 
-  const totalHeight = useMemo(() => pageHeight * spreads.length, [pageHeight, spreads.length]);
+  const onLayout = useCallback((e: LayoutChangeEvent) => {
+    const h = e.nativeEvent.layout.height;
+    if (h > 0) setPageHeight((prev) => (prev === h ? prev : h));
+  }, []);
 
   return (
-    <View style={styles.root}>
-      <Animated.ScrollView
-        ref={scrollRef}
-        style={styles.scroll}
-        contentContainerStyle={{ height: totalHeight }}
-        showsVerticalScrollIndicator={false}
-        pagingEnabled
-        snapToInterval={pageHeight}
-        decelerationRate="fast"
-        onScroll={onScroll}
-        scrollEventThrottle={16}
-      >
-        {spreads.map((spread, i) => (
-          <HeroSpread
-            key={spread.id}
-            spread={spread}
-            index={i}
-            total={spreads.length}
-            scrollY={scrollY}
-            pageHeight={pageHeight}
-            onOpen={() => handleOpen(spread)}
-          />
-        ))}
-      </Animated.ScrollView>
+    <View style={[styles.root, { backgroundColor: palette.bg }]} onLayout={onLayout}>
+      {pageHeight !== null && (
+        <>
+          <Animated.ScrollView
+            ref={scrollRef}
+            style={styles.scroll}
+            contentContainerStyle={{ height: pageHeight * spreads.length }}
+            showsVerticalScrollIndicator={false}
+            pagingEnabled
+            snapToInterval={pageHeight}
+            decelerationRate="fast"
+            onScroll={onScroll}
+            scrollEventThrottle={16}
+          >
+            {spreads.map((spread, i) => (
+              <HeroSpread
+                key={spread.id}
+                spread={spread}
+                index={i}
+                total={spreads.length}
+                scrollY={scrollY}
+                pageHeight={pageHeight}
+                onOpen={() => handleOpen(spread)}
+              />
+            ))}
+          </Animated.ScrollView>
 
-      <PageIndicator total={spreads.length} pageHeight={pageHeight} scrollY={scrollY} />
+          <PageIndicator total={spreads.length} pageHeight={pageHeight} scrollY={scrollY} />
+        </>
+      )}
     </View>
   );
 }
@@ -73,7 +79,6 @@ export function HomeTome({ spreads }: Props) {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    backgroundColor: palette.bg,
   },
   scroll: {
     flex: 1,

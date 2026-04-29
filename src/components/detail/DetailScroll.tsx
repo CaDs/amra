@@ -7,7 +7,9 @@ import Animated, {
 } from "react-native-reanimated";
 import { useRouter } from "expo-router";
 import { useResponsive } from "../../hooks/useResponsive";
-import { palette, space, type } from "../../theme/tokens";
+import { space, type, type Palette } from "../../theme/tokens";
+import { useTheme } from "../../theme/useTheme";
+import { useHaptics } from "../../hooks/useHaptics";
 import type { Tome } from "../../types/lore";
 import { Callouts } from "./Callouts";
 import { DetailHero } from "./DetailHero";
@@ -23,6 +25,9 @@ type Props = {
 
 export function DetailScroll({ tome }: Props) {
   const router = useRouter();
+  const { palette } = useTheme();
+  const haptics = useHaptics();
+  const styles = useMemo(() => makeStyles(palette), [palette]);
   const { height, isPhone } = useResponsive();
   const scrollY = useSharedValue(0);
   const animatedRef = useAnimatedRef<Animated.ScrollView>();
@@ -86,7 +91,10 @@ export function DetailScroll({ tome }: Props) {
     <View style={styles.root}>
       <Pressable
         style={styles.backButton}
-        onPress={() => router.back()}
+        onPress={() => {
+          haptics.light();
+          router.back();
+        }}
         accessibilityRole="button"
         accessibilityLabel="Back"
       >
@@ -207,52 +215,53 @@ export function DetailScroll({ tome }: Props) {
   );
 }
 
-const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-    backgroundColor: palette.bg,
-  },
-  scroll: {
-    flex: 1,
-  },
-  content: {
-    paddingBottom: space.giant,
-    alignItems: "center",
-  },
-  measure: {
-    width: "100%",
-    maxWidth: 760,
-  },
-  backButton: {
-    position: "absolute",
-    top: space.huge,
-    left: space.lg,
-    zIndex: 5,
-    paddingHorizontal: space.md,
-    paddingVertical: space.xs,
-  },
-  backLabel: {
-    ...type.label,
-    color: palette.textMuted,
-  },
-  proseBlock: {
-    gap: space.md,
-  },
-  prose: {
-    ...type.bodyLg,
-    color: palette.textPrimary,
-  },
-  dividerWrap: {
-    paddingVertical: space.xxl,
-    alignItems: "center",
-  },
-  footer: {
-    alignItems: "center",
-    paddingVertical: space.giant,
-    gap: space.md,
-  },
-  footerLabel: {
-    ...type.label,
-    color: palette.textFaint,
-  },
-});
+const makeStyles = (palette: Palette) =>
+  StyleSheet.create({
+    root: {
+      flex: 1,
+      backgroundColor: palette.bg,
+    },
+    scroll: {
+      flex: 1,
+    },
+    content: {
+      paddingBottom: space.giant,
+      alignItems: "center",
+    },
+    measure: {
+      width: "100%",
+      maxWidth: 760,
+    },
+    backButton: {
+      position: "absolute",
+      top: space.huge,
+      left: space.lg,
+      zIndex: 5,
+      paddingHorizontal: space.md,
+      paddingVertical: space.xs,
+    },
+    backLabel: {
+      ...type.label,
+      color: palette.textMuted,
+    },
+    proseBlock: {
+      gap: space.md,
+    },
+    prose: {
+      ...type.bodyLg,
+      color: palette.textPrimary,
+    },
+    dividerWrap: {
+      paddingVertical: space.xxl,
+      alignItems: "center",
+    },
+    footer: {
+      alignItems: "center",
+      paddingVertical: space.giant,
+      gap: space.md,
+    },
+    footerLabel: {
+      ...type.label,
+      color: palette.textFaint,
+    },
+  });

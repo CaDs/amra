@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { StyleSheet, View, ViewStyle } from "react-native";
-import { palette } from "../../theme/tokens";
+import { useTheme } from "../../theme/useTheme";
 
 type Props = {
   children: ReactNode;
@@ -8,12 +8,12 @@ type Props = {
 };
 
 export function ScreenFrame({ children, style }: Props) {
-  return <View style={[styles.frame, style]}>{children}</View>;
+  const { palette } = useTheme();
+  return <View style={[styles.frame, { backgroundColor: palette.bg }, style]}>{children}</View>;
 }
 
 const styles = StyleSheet.create({
   frame: {
     flex: 1,
-    backgroundColor: palette.bg,
   },
 });

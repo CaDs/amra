@@ -1,6 +1,9 @@
+import { useMemo } from "react";
 import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 import { useRouter } from "expo-router";
-import { palette, space, type } from "../../theme/tokens";
+import { space, type, type Palette } from "../../theme/tokens";
+import { useTheme } from "../../theme/useTheme";
+import { useHaptics } from "../../hooks/useHaptics";
 import type { Entry } from "../../types/lore";
 import { useResponsive } from "../../hooks/useResponsive";
 
@@ -12,9 +15,13 @@ type Props = {
 
 export function IndexStrip({ tomeId, subEntries, label }: Props) {
   const router = useRouter();
+  const { palette } = useTheme();
+  const haptics = useHaptics();
+  const styles = useMemo(() => makeStyles(palette), [palette]);
   const { isPhone } = useResponsive();
 
   const onPress = (entryId: string) => {
+    haptics.medium();
     router.push({
       pathname: "/[tomeId]/[entryId]",
       params: { tomeId, entryId },
@@ -63,62 +70,63 @@ export function IndexStrip({ tomeId, subEntries, label }: Props) {
   );
 }
 
-const styles = StyleSheet.create({
-  outer: {
-    paddingTop: space.giant,
-    paddingBottom: space.xxl,
-    gap: space.lg,
-  },
-  heading: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: space.xs,
-    paddingHorizontal: space.xl,
-  },
-  label: { ...type.label, color: palette.textMuted },
-  count: { ...type.label, color: palette.textFaint },
-  list: {
-    paddingHorizontal: space.xl,
-    gap: space.md,
-  },
-  card: {
-    borderWidth: 1,
-    borderColor: palette.borderSubtle,
-    borderRadius: 8,
-    padding: space.lg,
-    backgroundColor: palette.bgSurface,
-    gap: space.sm,
-    justifyContent: "space-between",
-  },
-  cardPhone: {
-    width: 230,
-    minHeight: 200,
-  },
-  cardWide: {
-    width: 290,
-    minHeight: 220,
-  },
-  cardIndex: {
-    ...type.label,
-    color: palette.dener,
-  },
-  cardTitle: {
-    ...type.title,
-    fontSize: 19,
-    lineHeight: 24,
-    color: palette.textPrimary,
-  },
-  cardSubtitle: {
-    ...type.body,
-    color: palette.textSecondary,
-    fontSize: 14,
-    lineHeight: 20,
-  },
-  cardFooter: {
-    marginTop: space.sm,
-  },
-  cardOpen: {
-    ...type.label,
-    color: palette.textMuted,
-  },
-});
+const makeStyles = (palette: Palette) =>
+  StyleSheet.create({
+    outer: {
+      paddingTop: space.giant,
+      paddingBottom: space.xxl,
+      gap: space.lg,
+    },
+    heading: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: space.xs,
+      paddingHorizontal: space.xl,
+    },
+    label: { ...type.label, color: palette.textMuted },
+    count: { ...type.label, color: palette.textFaint },
+    list: {
+      paddingHorizontal: space.xl,
+      gap: space.md,
+    },
+    card: {
+      borderWidth: 1,
+      borderColor: palette.borderSubtle,
+      borderRadius: 8,
+      padding: space.lg,
+      backgroundColor: palette.bgSurface,
+      gap: space.sm,
+      justifyContent: "space-between",
+    },
+    cardPhone: {
+      width: 230,
+      minHeight: 200,
+    },
+    cardWide: {
+      width: 290,
+      minHeight: 220,
+    },
+    cardIndex: {
+      ...type.label,
+      color: palette.dener,
+    },
+    cardTitle: {
+      ...type.title,
+      fontSize: 19,
+      lineHeight: 24,
+      color: palette.textPrimary,
+    },
+    cardSubtitle: {
+      ...type.body,
+      color: palette.textSecondary,
+      fontSize: 14,
+      lineHeight: 20,
+    },
+    cardFooter: {
+      marginTop: space.sm,
+    },
+    cardOpen: {
+      ...type.label,
+      color: palette.textMuted,
+    },
+  });

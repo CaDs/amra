@@ -1,7 +1,8 @@
-import { ReactNode } from "react";
+import { ReactNode, useMemo } from "react";
 import { StyleSheet, Text, View, ViewStyle } from "react-native";
 import { useResponsive } from "../../hooks/useResponsive";
-import { palette, space, type } from "../../theme/tokens";
+import { space, type, type Palette } from "../../theme/tokens";
+import { useTheme } from "../../theme/useTheme";
 
 type Props = {
   label: string;
@@ -12,6 +13,8 @@ type Props = {
 };
 
 export function SectionLayout({ label, title, body, aside, style }: Props) {
+  const { palette } = useTheme();
+  const styles = useMemo(() => makeStyles(palette), [palette]);
   const { isPhone } = useResponsive();
   const isWide = !isPhone;
 
@@ -34,32 +37,33 @@ export function SectionLayout({ label, title, body, aside, style }: Props) {
   );
 }
 
-const styles = StyleSheet.create({
-  section: {
-    paddingHorizontal: space.xl,
-    paddingVertical: space.giant,
-    gap: space.lg,
-  },
-  label: {
-    ...type.label,
-    color: palette.textMuted,
-  },
-  title: {
-    ...type.title,
-    color: palette.textPrimary,
-  },
-  row: {
-    flexDirection: "row",
-    gap: space.xxl,
-    alignItems: "flex-start",
-  },
-  bodyCol: {
-    flex: 2,
-  },
-  asideCol: {
-    flex: 1,
-  },
-  asideStacked: {
-    marginTop: space.xl,
-  },
-});
+const makeStyles = (palette: Palette) =>
+  StyleSheet.create({
+    section: {
+      paddingHorizontal: space.xl,
+      paddingVertical: space.giant,
+      gap: space.lg,
+    },
+    label: {
+      ...type.label,
+      color: palette.textMuted,
+    },
+    title: {
+      ...type.title,
+      color: palette.textPrimary,
+    },
+    row: {
+      flexDirection: "row",
+      gap: space.xxl,
+      alignItems: "flex-start",
+    },
+    bodyCol: {
+      flex: 2,
+    },
+    asideCol: {
+      flex: 1,
+    },
+    asideStacked: {
+      marginTop: space.xl,
+    },
+  });

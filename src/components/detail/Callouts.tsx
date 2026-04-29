@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Animated, {
   useAnimatedStyle,
@@ -6,15 +6,19 @@ import Animated, {
   withDelay,
   withTiming,
 } from "react-native-reanimated";
-import { palette, space, type } from "../../theme/tokens";
+import { space, type, type Palette } from "../../theme/tokens";
 import { duration, easing } from "../../theme/motion";
 import { useReducedMotion } from "../../hooks/useReducedMotion";
+import { useTheme } from "../../theme/useTheme";
 
 type Props = {
   callouts: string[];
 };
 
 export function Callouts({ callouts }: Props) {
+  const { palette } = useTheme();
+  const styles = useMemo(() => makeStyles(palette), [palette]);
+
   return (
     <View style={styles.list}>
       {callouts.map((text, i) => (
@@ -25,6 +29,8 @@ export function Callouts({ callouts }: Props) {
 }
 
 function CalloutCard({ text, index }: { text: string; index: number }) {
+  const { palette } = useTheme();
+  const styles = useMemo(() => makeStyles(palette), [palette]);
   const reduced = useReducedMotion();
   const v = useSharedValue(reduced ? 1 : 0);
   const accent = index % 2 === 0 ? palette.dener : palette.iothas;
@@ -58,31 +64,32 @@ function CalloutCard({ text, index }: { text: string; index: number }) {
   );
 }
 
-const styles = StyleSheet.create({
-  list: {
-    gap: space.md,
-  },
-  card: {
-    flexDirection: "row",
-    borderWidth: 1,
-    borderColor: palette.borderSubtle,
-    borderRadius: 8,
-    backgroundColor: palette.bgSurface,
-    overflow: "hidden",
-  },
-  accent: {
-    width: 3,
-  },
-  body: {
-    flex: 1,
-    padding: space.lg,
-    gap: space.xs,
-  },
-  cardLabel: {
-    ...type.label,
-  },
-  cardBody: {
-    ...type.body,
-    color: palette.textPrimary,
-  },
-});
+const makeStyles = (palette: Palette) =>
+  StyleSheet.create({
+    list: {
+      gap: space.md,
+    },
+    card: {
+      flexDirection: "row",
+      borderWidth: 1,
+      borderColor: palette.borderSubtle,
+      borderRadius: 8,
+      backgroundColor: palette.bgSurface,
+      overflow: "hidden",
+    },
+    accent: {
+      width: 3,
+    },
+    body: {
+      flex: 1,
+      padding: space.lg,
+      gap: space.xs,
+    },
+    cardLabel: {
+      ...type.label,
+    },
+    cardBody: {
+      ...type.body,
+      color: palette.textPrimary,
+    },
+  });

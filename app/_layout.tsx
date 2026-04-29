@@ -3,14 +3,37 @@ import * as SplashScreen from "expo-splash-screen";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import "react-native-reanimated";
 
 import { useAppFonts } from "../src/theme/fonts";
-import { palette } from "../src/theme/tokens";
+import { SettingsProvider } from "../src/state/SettingsContext";
+import { useTheme } from "../src/theme/useTheme";
 
 SplashScreen.preventAutoHideAsync().catch(() => {
   /* noop */
 });
+
+function ThemedStack() {
+  const { palette, isDark } = useTheme();
+  return (
+    <>
+      <StatusBar style={isDark ? "light" : "dark"} />
+      <Stack
+        screenOptions={{
+          headerShown: false,
+          contentStyle: { backgroundColor: palette.bg },
+          animation: "fade",
+        }}
+      >
+        <Stack.Screen name="(tabs)" />
+        <Stack.Screen name="gazetteer" options={{ animation: "slide_from_right" }} />
+        <Stack.Screen name="[tomeId]/index" options={{ animation: "slide_from_bottom" }} />
+        <Stack.Screen name="[tomeId]/[entryId]" options={{ animation: "slide_from_right" }} />
+      </Stack>
+    </>
+  );
+}
 
 export default function RootLayout() {
   const ready = useAppFonts();
@@ -26,20 +49,12 @@ export default function RootLayout() {
   if (!ready) return null;
 
   return (
-    <GestureHandlerRootView style={{ flex: 1, backgroundColor: palette.bg }}>
-      <StatusBar style="light" />
-      <Stack
-        screenOptions={{
-          headerShown: false,
-          contentStyle: { backgroundColor: palette.bg },
-          animation: "fade",
-        }}
-      >
-        <Stack.Screen name="index" />
-        <Stack.Screen name="gazetteer" options={{ animation: "slide_from_right" }} />
-        <Stack.Screen name="[tomeId]/index" options={{ animation: "slide_from_bottom" }} />
-        <Stack.Screen name="[tomeId]/[entryId]" options={{ animation: "slide_from_right" }} />
-      </Stack>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <SafeAreaProvider>
+        <SettingsProvider>
+          <ThemedStack />
+        </SettingsProvider>
+      </SafeAreaProvider>
     </GestureHandlerRootView>
   );
 }

@@ -1,5 +1,5 @@
 import { StyleSheet, View, ViewStyle } from "react-native";
-import { palette } from "../../theme/tokens";
+import { useTheme } from "../../theme/useTheme";
 
 type Props = {
   width?: number | "100%";
@@ -8,6 +8,7 @@ type Props = {
 };
 
 export function Hairline({ width = "100%", emphasis = "subtle", style }: Props) {
+  const { palette } = useTheme();
   return (
     <View
       accessibilityRole="none"

@@ -1,4 +1,19 @@
-export const palette = {
+export type Palette = {
+  bg: string;
+  bgSurface: string;
+  bgElevated: string;
+  borderSubtle: string;
+  borderEmphasis: string;
+  textPrimary: string;
+  textSecondary: string;
+  textMuted: string;
+  textFaint: string;
+  dener: string;
+  iothas: string;
+  scrim: string;
+};
+
+export const darkPalette: Palette = {
   bg: "#0e0f12",
   bgSurface: "#16181d",
   bgElevated: "#1c1f25",
@@ -15,7 +30,26 @@ export const palette = {
   iothas: "#d87070",
 
   scrim: "rgba(14, 15, 18, 0.6)",
-} as const;
+};
+
+export const lightPalette: Palette = {
+  bg: "#f5f3ee",
+  bgSurface: "#ece8e0",
+  bgElevated: "#e2dcd2",
+
+  borderSubtle: "#d8d2c6",
+  borderEmphasis: "#b8b0a2",
+
+  textPrimary: "#16181d",
+  textSecondary: "#4a4a52",
+  textMuted: "#6d6d75",
+  textFaint: "#9a9aa2",
+
+  dener: "#4a5878",
+  iothas: "#b04848",
+
+  scrim: "rgba(245, 243, 238, 0.6)",
+};
 
 export const fonts = {
   sans: "Inter_400Regular",
@@ -64,6 +98,5 @@ export const breakpoints = {
   web: 1200,
 } as const;
 
-export type Palette = typeof palette;
 export type FontFamilies = typeof fonts;
 export type Type = typeof type;

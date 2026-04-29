@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Animated, {
   Extrapolation,
@@ -5,7 +6,8 @@ import Animated, {
   type SharedValue,
   useAnimatedStyle,
 } from "react-native-reanimated";
-import { palette, space, type } from "../../theme/tokens";
+import { space, type, type Palette } from "../../theme/tokens";
+import { useTheme } from "../../theme/useTheme";
 import type { PullQuote } from "../../types/lore";
 
 type Props = {
@@ -16,6 +18,9 @@ type Props = {
 };
 
 export function PullQuoteSplash({ pullQuote, scrollY, startAt, height }: Props) {
+  const { palette } = useTheme();
+  const styles = useMemo(() => makeStyles(palette), [palette]);
+
   const animated = useAnimatedStyle(() => {
     const range = [startAt - height, startAt - height * 0.4, startAt + height * 0.5, startAt + height];
     const opacity = interpolate(scrollY.value, range, [0, 1, 1, 0], Extrapolation.CLAMP);
@@ -33,23 +38,24 @@ export function PullQuoteSplash({ pullQuote, scrollY, startAt, height }: Props) 
   );
 }
 
-const styles = StyleSheet.create({
-  outer: {
-    width: "100%",
-    alignItems: "flex-start",
-    justifyContent: "center",
-    paddingHorizontal: space.xl,
-  },
-  inner: {
-    alignItems: "flex-start",
-    gap: 4,
-  },
-  top: {
-    ...type.pullQuote,
-    color: palette.textPrimary,
-  },
-  bottom: {
-    ...type.pullQuote,
-    color: palette.iothas,
-  },
-});
+const makeStyles = (palette: Palette) =>
+  StyleSheet.create({
+    outer: {
+      width: "100%",
+      alignItems: "flex-start",
+      justifyContent: "center",
+      paddingHorizontal: space.xl,
+    },
+    inner: {
+      alignItems: "flex-start",
+      gap: 4,
+    },
+    top: {
+      ...type.pullQuote,
+      color: palette.textPrimary,
+    },
+    bottom: {
+      ...type.pullQuote,
+      color: palette.iothas,
+    },
+  });

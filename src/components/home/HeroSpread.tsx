@@ -6,7 +6,9 @@ import Animated, {
   type SharedValue,
   useAnimatedStyle,
 } from "react-native-reanimated";
-import { palette, space, type } from "../../theme/tokens";
+import { space, type, type Palette } from "../../theme/tokens";
+import { useTheme } from "../../theme/useTheme";
+import { useHaptics } from "../../hooks/useHaptics";
 import type { HomeSpread as HomeSpreadData } from "../../types/lore";
 
 type Props = {
@@ -19,6 +21,10 @@ type Props = {
 };
 
 export function HeroSpread({ spread, index, total, scrollY, pageHeight, onOpen }: Props) {
+  const { palette } = useTheme();
+  const haptics = useHaptics();
+  const styles = useMemo(() => makeStyles(palette), [palette]);
+
   const range = useMemo(
     () => [(index - 1) * pageHeight, index * pageHeight, (index + 1) * pageHeight] as const,
     [index, pageHeight],
@@ -50,7 +56,10 @@ export function HeroSpread({ spread, index, total, scrollY, pageHeight, onOpen }
 
       <Pressable
         style={styles.heroButton}
-        onPress={onOpen}
+        onPress={() => {
+          haptics.medium();
+          onOpen();
+        }}
         accessibilityRole="button"
         accessibilityLabel={`Open ${spread.title}`}
       >
@@ -79,60 +88,61 @@ export function HeroSpread({ spread, index, total, scrollY, pageHeight, onOpen }
   );
 }
 
-const styles = StyleSheet.create({
-  page: {
-    width: "100%",
-    paddingHorizontal: space.xl,
-    paddingTop: space.huge,
-    paddingBottom: space.xxl,
-    justifyContent: "space-between",
-  },
-  chrome: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  chromeTop: {},
-  chromeBottom: {},
-  heroButton: {
-    flex: 1,
-    justifyContent: "center",
-  },
-  heroBlock: {
-    alignItems: "flex-start",
-    gap: space.sm,
-  },
-  kicker: {
-    ...type.label,
-    color: palette.textMuted,
-    marginBottom: space.xs,
-  },
-  heroTitle: {
-    ...type.hero,
-    color: palette.textPrimary,
-  },
-  heroSubtitle: {
-    ...type.subtitle,
-    color: palette.textSecondary,
-    marginTop: space.xxs,
-  },
-  pullQuoteRow: {
-    marginTop: space.xl,
-  },
-  pullQuoteTop: {
-    ...type.subtitle,
-    fontSize: 20,
-    lineHeight: 28,
-    color: palette.textPrimary,
-  },
-  pullQuoteBottom: {
-    ...type.subtitle,
-    fontSize: 20,
-    lineHeight: 28,
-    color: palette.iothas,
-  },
-  label: {
-    ...type.label,
-    color: palette.textFaint,
-  },
-});
+const makeStyles = (palette: Palette) =>
+  StyleSheet.create({
+    page: {
+      width: "100%",
+      paddingHorizontal: space.xl,
+      paddingTop: space.huge,
+      paddingBottom: space.xxl,
+      justifyContent: "space-between",
+    },
+    chrome: {
+      flexDirection: "row",
+      justifyContent: "space-between",
+      alignItems: "center",
+    },
+    chromeTop: {},
+    chromeBottom: {},
+    heroButton: {
+      flex: 1,
+      justifyContent: "center",
+    },
+    heroBlock: {
+      alignItems: "flex-start",
+      gap: space.sm,
+    },
+    kicker: {
+      ...type.label,
+      color: palette.textMuted,
+      marginBottom: space.xs,
+    },
+    heroTitle: {
+      ...type.hero,
+      color: palette.textPrimary,
+    },
+    heroSubtitle: {
+      ...type.subtitle,
+      color: palette.textSecondary,
+      marginTop: space.xxs,
+    },
+    pullQuoteRow: {
+      marginTop: space.xl,
+    },
+    pullQuoteTop: {
+      ...type.subtitle,
+      fontSize: 20,
+      lineHeight: 28,
+      color: palette.textPrimary,
+    },
+    pullQuoteBottom: {
+      ...type.subtitle,
+      fontSize: 20,
+      lineHeight: 28,
+      color: palette.iothas,
+    },
+    label: {
+      ...type.label,
+      color: palette.textFaint,
+    },
+  });
