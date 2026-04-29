@@ -13,11 +13,54 @@ type Props = {
   label: string;
 };
 
+type Bucket = { key: string; label: string; entries: Entry[] };
+
+function bucketEntries(subEntries: Entry[], defaultLabel: string): Bucket[] {
+  const buckets = new Map<string, Bucket>();
+  const order: string[] = [];
+  for (const entry of subEntries) {
+    const label = entry.group ?? defaultLabel;
+    const key = label;
+    let bucket = buckets.get(key);
+    if (!bucket) {
+      bucket = { key, label, entries: [] };
+      buckets.set(key, bucket);
+      order.push(key);
+    }
+    bucket.entries.push(entry);
+  }
+  return order.map((key) => buckets.get(key)!);
+}
+
 export function IndexStrip({ tomeId, subEntries, label }: Props) {
+  const buckets = useMemo(() => bucketEntries(subEntries, label), [subEntries, label]);
+  return (
+    <View style={styles.outer}>
+      {buckets.map((bucket) => (
+        <IndexStripGroup
+          key={bucket.key}
+          tomeId={tomeId}
+          label={bucket.label}
+          entries={bucket.entries}
+        />
+      ))}
+    </View>
+  );
+}
+
+function IndexStripGroup({
+  tomeId,
+  label,
+  entries,
+}: {
+  tomeId: string;
+  label: string;
+  entries: Entry[];
+}) {
   const router = useRouter();
   const { palette } = useTheme();
   const haptics = useHaptics();
-  const styles = useMemo(() => makeStyles(palette), [palette]);
+  const groupStyles = useMemo(() => makeStyles(palette), [palette]);
   const { isPhone } = useResponsive();
 
   const onPress = (entryId: string) => {
@@ -29,39 +72,39 @@ export function IndexStrip({ tomeId, subEntries, label }: Props) {
   };
 
   return (
-    <View style={styles.outer}>
-      <View style={styles.heading}>
-        <Text style={styles.label}>{label}</Text>
-        <Text style={styles.count}>· {subEntries.length}</Text>
+    <View style={groupStyles.group}>
+      <View style={groupStyles.heading}>
+        <Text style={groupStyles.label}>{label.toUpperCase()}</Text>
+        <Text style={groupStyles.count}>· {entries.length}</Text>
       </View>
       <FlatList
         horizontal
-        data={subEntries}
+        data={entries}
         keyExtractor={(e) => e.id}
         showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.list}
+        contentContainerStyle={groupStyles.list}
         renderItem={({ item, index }) => (
           <Pressable
-            style={[styles.card, isPhone ? styles.cardPhone : styles.cardWide]}
+            style={[groupStyles.card, isPhone ? groupStyles.cardPhone : groupStyles.cardWide]}
             onPress={() => onPress(item.id)}
             accessibilityRole="button"
             accessibilityLabel={`Open ${item.title}`}
           >
-            <Text style={styles.cardIndex}>{String(index + 1).padStart(2, "0")}</Text>
-            <Text style={styles.cardTitle} numberOfLines={2}>
+            <Text style={groupStyles.cardIndex}>{String(index + 1).padStart(2, "0")}</Text>
+            <Text style={groupStyles.cardTitle} numberOfLines={2}>
               {item.title}
             </Text>
             {item.subTitle ? (
-              <Text style={styles.cardSubtitle} numberOfLines={2}>
+              <Text style={groupStyles.cardSubtitle} numberOfLines={2}>
                 {item.subTitle}
               </Text>
             ) : item.history?.[0] ? (
-              <Text style={styles.cardSubtitle} numberOfLines={3}>
+              <Text style={groupStyles.cardSubtitle} numberOfLines={3}>
                 {item.history[0].slice(0, 120)}…
               </Text>
             ) : null}
-            <View style={styles.cardFooter}>
-              <Text style={styles.cardOpen}>read →</Text>
+            <View style={groupStyles.cardFooter}>
+              <Text style={groupStyles.cardOpen}>read →</Text>
             </View>
           </Pressable>
         )}
@@ -70,11 +113,17 @@ export function IndexStrip({ tomeId, subEntries, label }: Props) {
   );
 }
 
+const styles = StyleSheet.create({
+  outer: {
+    paddingTop: space.giant,
+    paddingBottom: space.xxl,
+    gap: space.xl,
+  },
+});
+
 const makeStyles = (palette: Palette) =>
   StyleSheet.create({
-    outer: {
-      paddingTop: space.giant,
-      paddingBottom: space.xxl,
+    group: {
       gap: space.lg,
     },
     heading: {

@@ -20,54 +20,63 @@ historyInfo2: Elves possess a unique ability to harmonize with other magical bei
 
 title: Abjuration
 subTitle: Magic of Protection and Warding
+group: Arcane Magic
 historyInfo1: The School of Abjuration focuses on magic of defense and protection. Practitioners of abjuration weave spells that shield their allies from harm, repel hostile magic, and banish dangerous entities from the material plane. Abjuration is often employed by those dedicated to protecting others—clerics, paladins, and defensive mages all draw upon abjuration's principles. Wards, barriers, and protective enchantments form the foundation of this school's practice.
 
 ---
 
 title: Conjuration
 subTitle: Magic of Summoning and Creation
+group: Arcane Magic
 historyInfo1: The School of Conjuration is dedicated to summoning magical creatures and items to aid practitioners in achieving their aims. Through study and ritual, conjurers learn to call forth powerful beings from across the planes and to create objects from magical energy. This school is complex and dangerous, for summoned beings do not always obey the conjurer's will, and the creatures of other planes often harbor their own agendas. Mastery of conjuration requires both power and wisdom.
 
 ---
 
 title: Divination
 subTitle: Magic of Sight and Knowledge
+group: Arcane Magic
 historyInfo1: The School of Divination focuses on perception and understanding of both the magical and physical worlds. Through divination magic, practitioners can perceive distant places and events, glimpse possible futures, and unveil hidden truths obscured from normal senses. Diviners serve as advisors to kingdoms and leaders, their insights into the nature of reality invaluable for navigating uncertain times. Divination requires patience, clarity of mind, and an understanding that the future is never certain.
 
 ---
 
 title: Enchantment
 subTitle: Magic of Influence and Will
+group: Arcane Magic
 historyInfo1: The School of Enchantment focuses on the manipulation of minds and emotions. Enchantment magic allows practitioners to influence the thoughts and feelings of others, compelling obedience or inspiring confidence. This school is both powerful and ethically complex, for it touches upon the very essence of free will. Many societies restrict the practice of enchantment, recognizing its potential for abuse. Responsible enchanters use their magic sparingly and with wisdom about the consequences of their actions.
 
 ---
 
 title: Evocation
 subTitle: Magic of Raw Power
+group: Arcane Magic
 historyInfo1: The School of Evocation emphasizes the creation and control of raw magical energy. Evokers learn to direct magical force toward destructive or transformative purposes—unleashing torrents of flame, blasts of thunder, or waves of force. This school is often the first that novice mages study, as evocation's principles are relatively straightforward to understand, even if mastery takes decades. Evokers are valued in military campaigns and dangerous situations where raw magical power is needed to overcome obstacles or enemies.
 
 ---
 
 title: Illusion
 subTitle: Magic of Deception and Misdirection
+group: Arcane Magic
 historyInfo1: The School of Illusion is dedicated to crafting false images and manipulating perception. Illusionists can create visual, auditory, and even olfactory deceptions that fool the senses. This school is prized by thieves, spies, and performers, though it is also used by legitimate practitioners for legitimate purposes. The finest illusionists can create deceptions so realistic that victims cannot distinguish them from truth, making this one of the most subtle and potentially dangerous schools of magic.
 
 ---
 
 title: Necromancy
 subTitle: Magic of Death and Life's Mysteries
+group: Arcane Magic
 historyInfo1: The School of Necromancy is devoted to understanding and manipulating the boundary between life and death. Through necromantic magic, practitioners can restore the dead to animated service, guide souls through the afterlife, or accelerate the natural processes of decay. Necromancy is perhaps the most feared and restricted school of magic, as its power can be turned to evil purposes. Yet it also offers paths to healing, resurrection of the fallen, and understanding of death's mysteries. Most cultures demand that necromancers accept strict ethical codes.
 
 ---
 
 title: Transmutation
 subTitle: Magic of Change and Transformation
+group: Arcane Magic
 historyInfo1: The School of Transmutation focuses on the alteration of matter and energy. Transmuters learn to change the forms of objects and creatures, accelerate or reverse natural processes, and transform one substance into another. This school is beloved by alchemists, crafters, and those seeking to improve the natural world. Transmutation can create objects of value, heal injuries, or enhance the abilities of living beings. However, careless transmutation can have disastrous consequences.
 
 ---
 
 title: The Towers of High Magic
 subTitle: Repositories of Arcane Wisdom
+group: Arcane Magic
 callout1: The Towers of High Magic are vast institutions established by elven mages to preserve and teach the arcane arts.
 callout2: Each tower is strategically placed so no point in Amra is more than a few days' journey from magical instruction.
 historyInfo1: During the gilded age of the elves, a great conclave of wizards and sorcerers convened with a grave concern: magic, if left unchecked and unguided, could plunge their world into chaos. They envisioned great towers—bastions of knowledge where seekers of the arcane could learn from experienced mentors under watchful guidance. For years, elven mages toiled in secret to craft intricate plans and architectural blueprints, until at last they brought their vision to life.

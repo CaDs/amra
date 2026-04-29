@@ -19,6 +19,7 @@ historyInfo2: The Brotherhood is led by a Council of Light, made up of the order
 ---
 
 title: Relevant Members of the Brotherhood of Light
+group: The Brotherhood of Light
 historyInfo1: **Alistair Dawnbringer** leads the Brotherhood with wisdom, though he harbors a dark secret that could jeopardize everything he has built. **Lysandra Nightingale** is a fierce young paladin whose loyalty to the Brotherhood is tested when she uncovers a dark plot within its ranks. **Lucius Darkblade**, a former Brotherhood member turned lone inquisitor, is renowned for his skill in fighting demons yet brings conflict through his brutal methods. **Niamh Moonflower** is a healer and priestess of extraordinary compassion, yet her dark past haunts her. **Darian Blackwood** is a young acolyte seeking adventure, facing trials that will force him to mature. **Elvira Dawnwhisper** is a bard and messenger whose beauty and skill are complicated by family problems and forbidden attractions.
 
 ---
@@ -33,6 +34,7 @@ historyInfo2: The Concord is led by the Synod of Illumination, comprised of the 
 ---
 
 title: Relevant Members of the Arcane Concord
+group: The Arcane Concord
 historyInfo1: **Maelis Sunstone** is a visionary wizard driven by dreams of unity among magical practitioners, contending with growing factionalism. **Vaela Whisperwind** is a prodigious sorceress and accomplished diplomat whose dark prophecy weighs heavily upon her. **Kaelas Shadowstep** is an enigmatic warlock whose pact with an extraplanar entity grants unique insights, though he struggles with his patron's demands. **Allara Brightmantle** is a dedicated artificer and innovator whose creations attract the attention of rival factions, placing her in grave danger.
 
 ---
@@ -47,6 +49,7 @@ historyInfo2: The Azure Chorus is led by the enigmatic Maestro, a shadowy figure
 ---
 
 title: Relevant Members of the Azure Chorus
+group: The Azure Chorus
 historyInfo1: **Lysander Fairsong** is a charming bard and spy whose silver tongue weaves complex webs of influence, yet he struggles to determine who he can truly trust. **Selene Nightbloom** is a skilled assassin and musician using her enchanting voice before striking, searching for redemption. **Eldric Shadowstrider** is a resourceful thief and information broker who confronts ghosts of his past to protect his allies. **Isolde Ravenshaw** is a cunning illusionist specializing in deception, her ability to discern truth tested when she uncovers a threatening plot.
 
 ---
@@ -61,6 +64,7 @@ historyInfo2: Adate's servants are extremely secretive, and their members are di
 ---
 
 title: Relevant Members of the Masks of Adate
+group: The Masks of Adate
 historyInfo1: **The Mask** is believed to be "The Hand's" right hand, her ability to change appearance and personality making her especially adept at infiltration. **The Hunter** is a cold and calculating man in charge of eliminating opposition, extremely effective at his work. **The Counselor** advises "The Hand" on all matters, with great ability to anticipate enemies' moves and find creative solutions. **The Mermaid** dedicates herself to recruiting new members, with a knack for manipulating and deceiving those who approach her. **The Exile** is a lonely and desperate man kicked out for unknown reasons, obsessed with revenge and regaining his place.
 
 ---
@@ -75,6 +79,7 @@ historyInfo2: The Covenant is led by the Storm Council, a group of the most expe
 ---
 
 title: Relevant Members of the Stormforged Covenant
+group: The Stormforged Covenant
 historyInfo1: **Rhogar Stormheart** is a legendary warrior and Elemental Warden whose unique connection to elements makes him a figure of awe and respect, yet he must confront his own dark past. **Ylara Windweaver** is a talented air elementalist whose ability to command the skies makes her valuable, though a hidden truth about the organization's origins tests her loyalties. **Taryn Emberstone** is a skilled blacksmith and fire elementalist whose powerful creations draw rival factions' attention. **Branor Frostreaver** is a stoic water elementalist and guardian of sacred secrets, facing old enemies. **Borin Thunderhunter** is a dwarf skilled in forging magical weapons imbued with electrical energy. **Lirael Silversword** is an elf who joined after her village was attacked by a dragon, specializing in anti-dragon weaponry.
 
 ---
@@ -89,6 +94,7 @@ historyInfo2: The Order is governed by the Circle of Guardians, a council of its
 ---
 
 title: Relevant Members of the Order of the Verdant Veil
+group: The Order of the Verdant Veil
 historyInfo1: **Elarwen Woodstrider** is the High Warden and respected druid whose deep connection to nature grants her the ability to communicate with ancient forest spirits, though their cryptic warnings trouble her. **Thalen Swiftfoot** is a resourceful ranger coordinating reconnaissance, struggling with the moral implications of some Order actions. **Lyra Silverbranch** is a gifted healer and herbalist with unwavering devotion, yet she must reconcile her past in a family of poachers. **Seraphine Ravenshadow** is a former assassin turned druid whose unique skillset makes her formidable, though her past haunts her. **Maegor Bloodfang** is the leader of a werewolf tribe allied with the Order, proving invaluable in defending nature.
 
 ---

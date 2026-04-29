@@ -64,6 +64,7 @@ function blockToEntry(block: Record<string, string>, fallbackId?: string): Entry
 
   const entry: Entry = { id, title };
   if (block.subTitle) entry.subTitle = block.subTitle.trim();
+  if (block.group) entry.group = block.group.trim();
   if (block.pullQuote1Top || block.pullQuote1Bottom) {
     entry.pullQuote = {
       top: (block.pullQuote1Top ?? "").trim(),

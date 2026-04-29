@@ -4,6 +4,7 @@ export type Entry = {
   id: string;
   title: string;
   subTitle?: string;
+  group?: string;
   pullQuote?: PullQuote;
   callouts?: string[];
   history?: [string] | [string, string];
