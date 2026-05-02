@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Amra",
-    "slug": "amra-app",
+    "slug": "amra",
     "version": "0.1.0",
     "orientation": "portrait",
     "scheme": "amra",
@@ -27,6 +27,13 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
-    }
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "41c7daf8-54f8-4b5a-8f93-ada5a91d7d0f"
+      }
+    },
+    "owner": "gamecanvasai"
   }
 }
