@@ -4,6 +4,7 @@ import Constants from "expo-constants";
 
 import { ScreenFrame } from "../../src/components/primitives/ScreenFrame";
 import { Hairline } from "../../src/components/primitives/Hairline";
+import { HamburgerButton } from "../../src/components/nav/HamburgerButton";
 import { space, type as typeTokens, type Palette } from "../../src/theme/tokens";
 import { useTheme, type ThemeMode } from "../../src/theme/useTheme";
 import { useSettings } from "../../src/state/SettingsContext";
@@ -20,9 +21,10 @@ export default function SettingsRoute() {
 
   return (
     <ScreenFrame>
+      <HamburgerButton />
       <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.measure}>
-          <Text style={styles.kicker}>SETTINGS</Text>
+          <Text style={styles.kicker}></Text>
           <Text style={styles.title}>Settings</Text>
           <Hairline width={56} style={styles.rule} />
 
@@ -140,7 +142,7 @@ const makeStyles = (palette: Palette) =>
   StyleSheet.create({
     content: {
       padding: space.xl,
-      paddingTop: space.huge,
+      paddingTop: space.giant + space.md,
       paddingBottom: space.giant * 2,
       alignItems: "center",
     },

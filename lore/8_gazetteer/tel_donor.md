@@ -14,53 +14,62 @@ locationInfo2: Beyond Donor'Dor lie other settlements reflecting Tel'Donor's dev
 ---
 
 title: Donor'Dor
+group: Sanctuaries & Halls
 historyInfo1: Donor'Dor stands as the vibrant heart of Tel'Donor, a city where the symbiotic relationship between elves and nature creates a living testament to harmony and balance. The city's foundations rest upon the principle that elves and the natural world are not separate entities but parts of a greater whole, each dependent upon the other for survival and flourishing. The city itself seems almost to grow from the earth rather than being built upon it, with structures woven seamlessly into the landscape and ancient trees incorporated into the architecture as if with deliberate purpose.
 historyInfo2: At the city's center stands the Sun Tree, a celestial relic brought from Eridael, the ancestral home of all elves, now grown to magnificent proportion in Donor'Dor's soil. The Sun Tree serves as both symbol and source—a connection to the ancient past and a living conduit through which the magic of the world flows. The city is governed by Queen Naiadriel Eglaneth and a council of wise ones, and attracts visitors from across Amra drawn by its legendary beauty and the warmth of the elves' hospitality.
 
 ---
 
 title: The Sun Tree
+group: Sanctuaries & Halls
 historyInfo1: At the heart of Donor'Dor stands the Sun Tree, a magnificent specimen brought from Eridael in the ancient past and grown to breathtaking proportion over the centuries. The tree is not merely botanical wonder but spiritual anchor—its roots run deeper than mountains are high, and its canopy spreads wide enough to shelter vast multitudes beneath its boughs. The bark shimmers with faint luminescence, and those who approach it report feeling a warmth that seems to emanate from the earth itself, as if the tree channels the power of creation itself.
 historyInfo2: The Sun Tree is sacred to all the elves of Tel'Donor, and pilgrims journey from across the realm to commune with it, believing that touching its bark grants clarity and connection with the natural world. The tree stands as powerful symbol of the elves' covenant with their ancestral homeland and their commitment to preserving the balance of nature for all future generations.
 
 ---
 
 title: Forest Sanctuaries
+group: Sanctuaries & Halls
 historyInfo1: Deep within Tel'Donor's ancient forests lie the Forest Sanctuaries, places of profound spiritual and magical significance where druids and wise healers retreat to study the deepest mysteries of nature. The sanctuaries are not built structures but rather natural clearings within the forest where the boundary between the mortal world and the realm of nature seems particularly thin. Here, ancient druids have studied for millennia, unlocking secrets of growth and restoration, understanding the language of plants and animals, and learning to channel the primal forces of the wild.
 historyInfo2: The sanctuaries attract initiates seeking to deepen their connection with nature and learn the ways of druidic magic. Those who complete their studies within the sanctuaries emerge as masters of their craft, capable of communing with the forest itself and wielding its power in defense of the realm. The sanctuaries remain hidden and protected, accessible only to those deemed worthy by the druids themselves.
 
 ---
 
 title: The Healing Groves
+group: Wilds & Borders
 historyInfo1: Throughout Tel'Donor, scattered among the ancient forests and protected glades, lie the Healing Groves where master herbalists and healers cultivate plants of extraordinary power and medicinal virtue. These sacred gardens have been tended for millennia, preserving seeds and knowledge across countless ages, ensuring that rare and potent plants continue to thrive. Certain herbs grow nowhere else in Amra, their cultivation a carefully guarded secret passed down through generations of master gardeners and healers.
 historyInfo2: The remedies produced from the Groves' plants are sought by nobles and common folk alike, though the cost of the most potent preparations is considerable and not all are willing to trade even great sums for them. In times of peace, the Groves contribute to Tel'Donor's prosperity through trade; in times of crisis, they become sources of vital healing for the wounded and afflicted. The Groves' healers are revered throughout Tel'Donor and beyond as masters of restoration and life-giving arts.
 
 ---
 
 title: Songwood Glades
+group: Wilds & Borders
 historyInfo1: In certain protected regions of Tel'Donor's forests lie the Songwood Glades, places where the music of nature itself seems to resonate with extraordinary clarity and beauty. The glades shimmer with an almost ethereal quality, their air filled with the songs of birds that seem to carry meaning and wisdom to those attuned to listen. The trees themselves appear to hum with vibration, their bark etched with patterns that catch the light and seem to tell stories of ages past.
 historyInfo2: The Songwood Glades attract bards, musicians, and artists seeking inspiration, as well as spiritual seekers hoping to achieve deeper communion with nature. Many claim that music composed or learned within the glades carries special power, and performances held there resonate with audiences in ways that transcend ordinary music. The glades remain one of Tel'Donor's most protected and sacred places.
 
 ---
 
 title: Crystal Springs
+group: Wilds & Borders
 historyInfo1: Within Tel'Donor's mountains and forests flow the Crystal Springs, places where fresh water wells from deep within the earth with purifying essence and apparent magical properties. The waters run clear and cold, reflecting light in such a way that the springs seem to glow with inner radiance. It is said that the waters themselves are blessed by ancient nature spirits, that bathing in them can cure diseases and restore vitality, and that drinking from them brings clarity of mind and purity of spirit.
 historyInfo2: Pilgrims journey across Tel'Donor to reach the Crystal Springs, hoping to experience the restorative power attributed to their waters. Though the claims of miraculous cures may be exaggerated, none can deny the remarkable beauty of the springs and the sense of peace and renewal that many report experiencing when in their presence. The springs are protected sacred places, and the elves ensure that their purity is maintained against all forms of contamination.
 
 ---
 
 title: Ancient Forests
+group: Wilds & Borders
 historyInfo1: The ancient forests of Tel'Donor are among the oldest and most primordial woodlands in all of Amra, with some trees standing for thousands of years and reaching heights that seem to touch the very sky. These forests represent an unbroken continuum from the ancient past, their trees having never known the axe or saw, their ecosystem untouched by the hand of those who would exploit nature for profit. The forest floor is carpeted with growth from countless ages—layers of fallen leaves forming rich soil that nurtures new life in endless cycles.
 historyInfo2: The ancient forests are home to creatures found nowhere else in Amra—animals of great size and intelligence that seem almost sentient in their behavior, as if connected to the forest in ways that transcend ordinary nature. The elves of Tel'Donor treat these forests as sacred spaces, venturing within only when necessity dictates and always with reverence and respect for all the life they support.
 
 ---
 
 title: The Gardens of Donor'Dor
+group: Sanctuaries & Halls
 historyInfo1: The gardens of Donor'Dor represent the pinnacle of elven horticultural mastery, vast cultivated spaces where rare and exotic plants grow in carefully maintained profusion. Every district of the city contains gardens—some small intimate spaces for private contemplation, others vast public gardens where citizens gather to celebrate the bounty of the natural world. The gardens burst with color throughout the seasons, their flowers blooming in impossible variety and exotic plants thriving in arrangements that seem perfectly suited to their individual needs.
 historyInfo2: Master gardeners tend the gardens with devotion approaching spiritual reverence, understanding that their work is not mere cultivation but participation in the greater symphony of nature. The gardens serve multiple purposes—they provide food and medicine, they showcase the beauty of the natural world, and they offer respite and renewal to those who walk their paths. Some of the oldest gardens have been maintained without interruption for over a thousand years, their plants and patterns representing centuries of accumulated knowledge and artistry.
 
 ---
 
 title: The Temple of Life
+group: Sanctuaries & Halls
 historyInfo1: In Donor'Dor stands the Temple of Life, a sacred place dedicated to the preservation and celebration of all living things. The temple itself seems to breathe with life—its walls are woven with living vines, its columns grown from ancient trees carefully shaped without harm, and its interior open to the sky with carefully tended gardens growing throughout its chambers. Priestesses and priests of the temple serve as healers and spiritual guides, helping those who come seeking restoration of body and spirit.
 historyInfo2: The Temple of Life draws pilgrims and seekers from across Tel'Donor and even from other lands, all coming to witness its beauty and seek healing and guidance. Within the temple's inner sanctum lies a pool fed by one of the Crystal Springs, said to possess restorative properties of remarkable potency. The temple's services are free to all who seek them, reflecting the elven belief that life and healing are gifts to be shared rather than commodities to be traded.

@@ -14,53 +14,62 @@ locationInfo2: Beyond Cathai lie six major cities representing the great familie
 ---
 
 title: Cathai
+group: Cities & Courts
 historyInfo1: Cathai has been the seat of imperial power for untold centuries, a city of breathtaking scale and architectural magnificence. The Celestial Court stands at its heart—an enormous complex of interconnected palaces, halls, and gardens where the Zhou family conducts the business of empire. The city is organized around the principle of cosmic harmony, with architecture reflecting celestial patterns and bureaucratic hierarchies mirroring the natural order. Vast institutions process imperial affairs; academies nurture talent through merit-based selection; temples honor ancestors and cosmic principles. The markets teem with goods from across the empire and beyond; theaters present performances celebrating Tianzhu's achievements; scholars debate philosophy and governance in academies.
 historyInfo2: Cathai is a city of ceremonies and protocols where every action carries significance and hierarchy determines access. Yet beneath the order lies constant maneuvering between families seeking advantage, with the Liang family's slow erosion of Zhou control, the Blood Tigers' dark operations, and courtiers plotting under veils of courteous smiles and deferential bows. The city embodies Tianzhu's contradictions—magnificent yet constrained, prosperous yet tense, harmonious yet competitive.
 
 ---
 
 title: Temple of the Nine Dragons
+group: Sacred Sites
 historyInfo1: The Temple of the Nine Dragons stands as one of Tianzhu's most sacred and architecturally magnificent structures, dedicated to honoring the nine celestial dragons believed to guide the empire's cosmic destiny. The temple's nine towers represent each dragon, their architecture reflecting celestial principles and cosmic balance. The temple serves as both a place of spiritual devotion and a center of philosophical learning where monks study the relationship between cosmic order and human governance.
 historyInfo2: The temple attracts pilgrims seeking spiritual enlightenment and students seeking to understand philosophical principles underlying empire governance. The temple is home to a vast library containing texts on philosophy, astronomy, medicine, and governance. The monks residing there are highly respected for their wisdom and their ability to interpret celestial signs and cosmic principles.
 
 ---
 
 title: The Jade Tower
+group: Sacred Sites
 historyInfo1: The Jade Tower stands at Cathai's heart as an architectural marvel and symbol of imperial power, built from pale jade stone and rising many stories into the sky. The tower is visible from great distances, serving as a beacon of imperial authority. The tower houses imperial treasuries, archives containing the empire's historical records, and private chambers where the emperor conducts sensitive imperial business.
 historyInfo2: The Jade Tower is closely guarded and accessible only to those with imperial authorization. Within its walls lie some of the empire's greatest treasures—gold, jewels, ancient artifacts, and sacred relics. The tower contains libraries holding imperial records and secret documents related to empire governance and the operations of the Blood Tigers.
 
 ---
 
 title: The Monastery of the Eight Trigrams
+group: Sacred Sites
 historyInfo1: The Monastery of the Eight Trigrams is a center of spiritual learning and martial training, where monks study the ancient trigrams believed to represent cosmic principles and teach martial arts disciplines that blend spiritual development with combat effectiveness. The monastery is home to some of the empire's greatest martial artists and philosophers, whose teachings have influenced imperial governance and military strategy.
 historyInfo2: The monastery attracts students seeking both spiritual enlightenment and martial mastery. The monks teach that true martial power comes from understanding cosmic principles and achieving harmony between mind, body, and spirit. The monastery's teachings have produced many of the empire's greatest generals, administrators, and spiritual leaders.
 
 ---
 
 title: The Celestial Court
+group: Cities & Courts
 historyInfo1: The Celestial Court is the imperial palace complex at Cathai's heart, the seat of the Zhou family's power and the center of imperial governance. The complex is enormous, containing hundreds of buildings, gardens, halls, and chambers organized around principles of cosmic harmony. The innermost sanctum is the Chamber of Ultimate Harmony, where the emperor conducts the empire's most sensitive affairs and where cosmic rituals believed to sustain imperial power are performed.
 historyInfo2: The Celestial Court is heavily guarded and accessible only to those with imperial authorization. Within its walls, the great families negotiate their complex alliances, the Blood Tigers conduct their covert operations, and the emperor grapples with challenges of maintaining harmony among competing interests. The court embodies both the grandeur of imperial power and the complex limitations imposed by the need to maintain balance among the great families.
 
 ---
 
 title: The City of the Thousand Arches
+group: Cities & Courts
 historyInfo1: The City of the Thousand Arches is an ancient metropolis famous for its distinctive architecture—thousands of arches spanning streets, plazas, and waterways, creating a city of extraordinary beauty and complexity. The arches represent the empire's commitment to harmony and balance, with each arch symbolizing a connection between different aspects of the cosmic order. The city is a center of architecture and engineering where the empire's greatest builders study and practice their craft.
 historyInfo2: The City of the Thousand Arches is a place of great beauty and strategic importance, serving as a major junction on trade routes and a center of architectural innovation. The city attracts architects and engineers seeking to master their craft and administrators seeking to oversee major construction projects.
 
 ---
 
 title: The Ruins of the Lost City of Qingzang
+group: Wilds & Ruins
 historyInfo1: The Ruins of the Lost City of Qingzang are all that remain of an ancient metropolis that mysteriously fell into decline centuries ago. Archaeological evidence suggests the city was once a major center of commerce and culture, but it was gradually abandoned until only ruins remained. The ruins are a source of fascination for scholars seeking to understand the empire's distant past and for adventurers seeking ancient treasures and artifacts.
 historyInfo2: The ruins are dangerous—structures are unstable and the surrounding region hosts bandits and criminals. Yet the ruins continue to attract explorers hoping to uncover secrets of the lost city and discover artifacts of value and historical significance.
 
 ---
 
 title: The Valley of the Spirits
+group: Wilds & Ruins
 historyInfo1: The Valley of the Spirits is a sacred place believed by Tianzhu's people to be inhabited by the spirits of ancestors and cosmic entities. The valley is home to temples and shrines dedicated to ancestor worship and cosmic principles. Pilgrims journey to the valley seeking spiritual guidance and connection with ancestors. The valley's natural beauty—mountains, rivers, and forests—creates an atmosphere conducive to spiritual reflection and communion.
 historyInfo2: The valley is considered sacred ground, and visitors are expected to show reverence and follow strict protocols. The valley attracts spiritual seekers hoping to achieve enlightenment and individuals seeking to strengthen their connection with family ancestors. The valley is also home to monks and hermits who have devoted their lives to spiritual practice and cosmic understanding.
 
 ---
 
 title: The Sun Mountain
+group: Wilds & Ruins
 historyInfo1: The Sun Mountain rises majestically in the eastern reaches of the empire, its peak often shrouded in mist and cloud. The mountain is considered sacred, believed to be the dwelling place of solar deities that influence the empire's destiny. The mountain is a destination for pilgrimage and spiritual practice, with temples and monasteries built on its slopes where monks study cosmic principles and seek enlightenment.
 historyInfo2: Climbing to the Sun Mountain's peak is considered a spiritual achievement and a demonstration of physical prowess and commitment. The climb is challenging and dangerous, with steep paths and unpredictable weather. Those who reach the summit are believed to have achieved a spiritual accomplishment, and the view from the peak is said to grant visions of cosmic significance.

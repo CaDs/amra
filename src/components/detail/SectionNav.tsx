@@ -62,7 +62,7 @@ function SectionDot({
 }) {
   const activeIndex = useDerivedValue(() => {
     const y = scrollY.value;
-    let idx = 0;
+    let idx = -1;
     for (let i = 0; i < sections.length; i++) {
       const sec = sections[i];
       if (sec && y + 120 >= sec.offsetY) idx = i;
@@ -71,7 +71,7 @@ function SectionDot({
   });
 
   const dotStyle = useAnimatedStyle(() => {
-    const isActive = Math.abs(activeIndex.value - index) < 0.5;
+    const isActive = activeIndex.value === index;
     const w = interpolate(isActive ? 1 : 0, [0, 1], [4, 16], Extrapolation.CLAMP);
     return {
       width: w,
@@ -80,7 +80,7 @@ function SectionDot({
   });
 
   const labelStyle = useAnimatedStyle(() => {
-    const isActive = Math.abs(activeIndex.value - index) < 0.5;
+    const isActive = activeIndex.value === index;
     return {
       opacity: isActive ? 1 : 0,
     };

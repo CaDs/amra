@@ -1,13 +1,15 @@
-import { useMemo } from "react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import Animated, {
   Extrapolation,
   interpolate,
+  runOnJS,
+  useAnimatedReaction,
   useAnimatedScrollHandler,
   useAnimatedStyle,
   useSharedValue,
 } from "react-native-reanimated";
-import { useRouter } from "expo-router";
+import { useNavigation, useRouter } from "expo-router";
 import { space, type, type Palette } from "../../theme/tokens";
 import { useTheme } from "../../theme/useTheme";
 import { useHaptics } from "../../hooks/useHaptics";
@@ -15,6 +17,7 @@ import type { Entry, Tome } from "../../types/lore";
 import { Hairline } from "../primitives/Hairline";
 import { Callouts } from "./Callouts";
 import { PullQuoteSplash } from "./PullQuoteSplash";
+import { IndexStrip } from "./IndexStrip";
 import { useResponsive } from "../../hooks/useResponsive";
 
 type Props = {
@@ -25,6 +28,7 @@ type Props = {
 
 export function SubEntryView({ entry, tome, index }: Props) {
   const router = useRouter();
+  const navigation = useNavigation();
   const { palette } = useTheme();
   const haptics = useHaptics();
   const styles = useMemo(() => makeStyles(palette), [palette]);
@@ -34,7 +38,36 @@ export function SubEntryView({ entry, tome, index }: Props) {
     scrollY.value = e.contentOffset.y;
   });
 
-  const heroH = Math.min(height * 0.55, 480);
+  const hapticsRef = useRef(haptics);
+  hapticsRef.current = haptics;
+  useEffect(() => {
+    const unsub = navigation.addListener("beforeRemove" as never, () => {
+      hapticsRef.current.light();
+    });
+    return unsub;
+  }, [navigation]);
+
+  const fireScrollHaptic = useCallback(() => hapticsRef.current.selection(), []);
+  const lastHapticY = useSharedValue(0);
+  useAnimatedReaction(
+    () => scrollY.value,
+    (y, prev) => {
+      if (prev === null) {
+        lastHapticY.value = y;
+        return;
+      }
+      if (Math.abs(y - lastHapticY.value) >= 120) {
+        lastHapticY.value = y;
+        runOnJS(fireScrollHaptic)();
+      }
+    },
+  );
+
+  const children = useMemo(
+    () => tome.subEntries.filter((e) => e.group === entry.title),
+    [tome.subEntries, entry.title],
+  );
+  const heroH = Math.min(height * 0.34, 300);
   const heroAnim = useAnimatedStyle(() => {
     const opacity = interpolate(scrollY.value, [0, heroH], [1, 0.3], Extrapolation.CLAMP);
     const ty = interpolate(scrollY.value, [0, heroH], [0, -heroH * 0.25], Extrapolation.CLAMP);
@@ -44,11 +77,8 @@ export function SubEntryView({ entry, tome, index }: Props) {
   return (
     <View style={styles.root}>
       <Pressable
-        style={styles.backButton}
-        onPress={() => {
-          haptics.light();
-          router.back();
-        }}
+        style={({ pressed }) => [styles.backButton, pressed && styles.backButtonPressed]}
+        onPress={() => router.back()}
         accessibilityRole="button"
         accessibilityLabel={`Back to ${tome.overview.title}`}
       >
@@ -83,7 +113,7 @@ export function SubEntryView({ entry, tome, index }: Props) {
 
         {entry.history ? (
           <View style={styles.section}>
-            <Text style={styles.sectionLabel}>ACCOUNT</Text>
+            <Text style={styles.sectionLabel}>HISTORY</Text>
             {entry.history.map((p, i) => (
               <Text key={i} style={styles.prose}>
                 {p}
@@ -118,6 +148,14 @@ export function SubEntryView({ entry, tome, index }: Props) {
           <PullQuoteSplash pullQuote={entry.pullQuote} scrollY={scrollY} startAt={heroH + 600} height={240} />
         ) : null}
 
+        {children.length > 0 ? (
+          <IndexStrip
+            tomeId={tome.id}
+            subEntries={children}
+            label={`WITHIN ${entry.title.toUpperCase()}`}
+          />
+        ) : null}
+
         <View style={styles.footer}>
           <Hairline width={48} />
           <Text style={styles.footerLabel}>END · ENTRY</Text>
@@ -142,13 +180,14 @@ const makeStyles = (palette: Palette) =>
       paddingHorizontal: space.md,
       paddingVertical: space.xs,
     },
+    backButtonPressed: { opacity: 0.45 },
     backLabel: { ...type.label, color: palette.textMuted },
     heroOuter: {
       width: "100%",
       alignItems: "flex-start",
-      justifyContent: "flex-end",
+      justifyContent: "flex-start",
       paddingHorizontal: space.xl,
-      paddingBottom: space.huge,
+      paddingTop: space.giant + space.md,
     },
     heroInner: { alignItems: "flex-start", gap: space.xs },
     kicker: { ...type.label, color: palette.textMuted, marginBottom: space.sm },

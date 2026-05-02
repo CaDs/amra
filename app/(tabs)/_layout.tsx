@@ -1,21 +1,25 @@
-import { Platform } from "react-native";
-import { Slot, Tabs } from "expo-router";
+import { Drawer } from "expo-router/drawer";
 
-import { TabBar } from "../../src/components/nav/TabBar";
+import { useTheme } from "../../src/theme/useTheme";
+import { DrawerContent } from "../../src/components/nav/DrawerContent";
 
 export default function TabsLayout() {
-  if (Platform.OS === "web") {
-    return <Slot />;
-  }
+  const { palette } = useTheme();
 
   return (
-    <Tabs
-      screenOptions={{ headerShown: false }}
-      tabBar={(props) => <TabBar {...props} />}
+    <Drawer
+      drawerContent={(props) => <DrawerContent {...props} />}
+      screenOptions={{
+        headerShown: false,
+        drawerType: "front",
+        drawerStyle: { backgroundColor: palette.bg, width: 288 },
+        overlayColor: "rgba(0,0,0,0.55)",
+        swipeEdgeWidth: 32,
+      }}
     >
-      <Tabs.Screen name="index" options={{ title: "Home" }} />
-      <Tabs.Screen name="lore" options={{ title: "Lore" }} />
-      <Tabs.Screen name="settings" options={{ title: "Settings" }} />
-    </Tabs>
+      <Drawer.Screen name="index" options={{ title: "Home" }} />
+      <Drawer.Screen name="lore" options={{ title: "Lore" }} />
+      <Drawer.Screen name="settings" options={{ title: "Settings" }} />
+    </Drawer>
   );
 }

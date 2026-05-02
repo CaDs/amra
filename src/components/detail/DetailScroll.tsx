@@ -1,11 +1,13 @@
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { LayoutChangeEvent, Pressable, StyleSheet, Text, View } from "react-native";
 import Animated, {
+  runOnJS,
+  useAnimatedReaction,
   useAnimatedRef,
   useAnimatedScrollHandler,
   useSharedValue,
 } from "react-native-reanimated";
-import { useRouter } from "expo-router";
+import { useNavigation, useRouter } from "expo-router";
 import { useResponsive } from "../../hooks/useResponsive";
 import { space, type, type Palette } from "../../theme/tokens";
 import { useTheme } from "../../theme/useTheme";
@@ -25,6 +27,7 @@ type Props = {
 
 export function DetailScroll({ tome }: Props) {
   const router = useRouter();
+  const navigation = useNavigation();
   const { palette } = useTheme();
   const haptics = useHaptics();
   const styles = useMemo(() => makeStyles(palette), [palette]);
@@ -45,7 +48,33 @@ export function DetailScroll({ tome }: Props) {
     scrollY.value = e.contentOffset.y;
   });
 
-  const heroHeight = Math.min(height * 0.7, 620);
+  const hapticsRef = useRef(haptics);
+  hapticsRef.current = haptics;
+  const fireScrollHaptic = useCallback(() => hapticsRef.current.selection(), []);
+
+  const lastHapticY = useSharedValue(0);
+  useAnimatedReaction(
+    () => scrollY.value,
+    (y, prev) => {
+      if (prev === null) {
+        lastHapticY.value = y;
+        return;
+      }
+      if (Math.abs(y - lastHapticY.value) >= 120) {
+        lastHapticY.value = y;
+        runOnJS(fireScrollHaptic)();
+      }
+    },
+  );
+
+  useEffect(() => {
+    const unsub = navigation.addListener("beforeRemove" as never, () => {
+      hapticsRef.current.light();
+    });
+    return unsub;
+  }, [navigation]);
+
+  const heroHeight = Math.min(height * 0.34, 320);
   const splashHeight = 280;
 
   const hasFacts = !!(tome.overview.callouts && tome.overview.callouts.length > 0);
@@ -53,7 +82,11 @@ export function DetailScroll({ tome }: Props) {
   const hasConstruction = !!tome.overview.construction;
   const hasLocation = !!tome.overview.location;
   const hasPullQuote = !!tome.overview.pullQuote;
-  const hasSubEntries = tome.subEntries.length > 0;
+  const indexEntries = useMemo(() => {
+    const titles = new Set(tome.subEntries.map((e) => e.title));
+    return tome.subEntries.filter((e) => !e.group || !titles.has(e.group));
+  }, [tome.subEntries]);
+  const hasSubEntries = indexEntries.length > 0;
 
   const sections: Section[] = useMemo(() => {
     const out: Section[] = [];
@@ -90,11 +123,8 @@ export function DetailScroll({ tome }: Props) {
   return (
     <View style={styles.root}>
       <Pressable
-        style={styles.backButton}
-        onPress={() => {
-          haptics.light();
-          router.back();
-        }}
+        style={({ pressed }) => [styles.backButton, pressed && styles.backButtonPressed]}
+        onPress={() => router.back()}
         accessibilityRole="button"
         accessibilityLabel="Back"
       >
@@ -128,7 +158,6 @@ export function DetailScroll({ tome }: Props) {
           <View onLayout={onSectionLayout("history")}>
             <SectionLayout
               label="HISTORY"
-              title={tome.kind === "region" ? "Origins" : "Account"}
               body={
                 <View style={styles.proseBlock}>
                   {overview.history!.map((p, i) => (
@@ -146,7 +175,6 @@ export function DetailScroll({ tome }: Props) {
           <View onLayout={onSectionLayout("construction")}>
             <SectionLayout
               label="POWER & PEOPLE"
-              title="Houses and figures"
               body={
                 <View style={styles.proseBlock}>
                   {overview.construction!.map((p, i) => (
@@ -164,7 +192,6 @@ export function DetailScroll({ tome }: Props) {
           <View onLayout={onSectionLayout("location")}>
             <SectionLayout
               label="PLACES"
-              title="Where the realm lives"
               body={
                 <View style={styles.proseBlock}>
                   {overview.location!.map((p, i) => (
@@ -195,7 +222,7 @@ export function DetailScroll({ tome }: Props) {
           <View onLayout={onSectionLayout("index")}>
             <IndexStrip
               tomeId={tome.id}
-              subEntries={tome.subEntries}
+              subEntries={indexEntries}
               label={tome.kind === "region" ? "WITHIN THE REGION" : "WITHIN THE CHAPTER"}
             />
           </View>
@@ -239,6 +266,9 @@ const makeStyles = (palette: Palette) =>
       zIndex: 5,
       paddingHorizontal: space.md,
       paddingVertical: space.xs,
+    },
+    backButtonPressed: {
+      opacity: 0.45,
     },
     backLabel: {
       ...type.label,

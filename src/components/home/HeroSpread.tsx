@@ -48,7 +48,7 @@ export function HeroSpread({ spread, index, total, scrollY, pageHeight, onOpen }
   return (
     <View style={[styles.page, { height: pageHeight }]}>
       <Animated.View style={[styles.chrome, styles.chromeTop, chromeStyle]}>
-        <Text style={styles.label}>amra</Text>
+        <View />
         <Text style={styles.label}>
           {indexLabel} / {totalLabel}
         </Text>

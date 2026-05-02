@@ -14,35 +14,41 @@ locationInfo2: Dhon Vondaral contains many significant sites: High Tide Harbor (
 ---
 
 title: Five Clans of Vondaral
+group: Clans
 historyInfo1: The five founding clans of Dhon Vondaral—Stoneheart, Silverhammer, Sunstone, Ironaxe, and Dragonbone—each contributed essential strengths to the kingdom's founding and development. Stoneheart provided leadership and governance; Silverhammer brought craftsmanship and construction expertise; Sunstone developed the merchant traditions; Ironaxe built the military; and Dragonbone led exploration and naval development. Together, these clans created a balanced civilization capable of thriving in both mountain and maritime environments.
 historyInfo2: The five clans remain the foundation of Vondaral's governance and identity. Each clan maintains pride in their heritage and contributions, yet all recognize their interdependence. The balance of power among the clans prevents any single family from dominating while ensuring diverse perspectives guide the kingdom's decisions. This system has proven remarkably stable, allowing Vondaral to thrive even in challenging times.
 
 ---
 
 title: Biramd-Hul
+group: Places & Landmarks
 historyInfo1: Biramd-Hul is Dhon Vondaral's primary city and the beating heart of the kingdom's maritime commerce. Built partially into coastal cliffs and partially on the harbor shore, the city is a spectacular sight—stone fortifications rise directly from the water, while harbor facilities sprawl along the coast. The city combines the grandeur of traditional dwarven architecture with practical maritime design, creating a unique aesthetic that reflects its dual nature.
 historyInfo2: The city is legendary throughout the maritime world as a center of trade, craftsmanship, and dwarven excellence. The harbor teems with merchant vessels from countless nations, while the shipyards produce vessels of exceptional quality. Taverns and marketplaces are filled with traders, sailors, and adventurers from across the world. Biramd-Hul represents the culmination of Vondaral's success—a city where mountain tradition and maritime innovation create something greater than either alone could achieve.
 
 ---
 
 title: High Tide Harbor
+group: Places & Landmarks
 historyInfo1: High Tide Harbor is Dhon Vondaral's primary port and the center of the kingdom's maritime commerce. The harbor is expansive, capable of accommodating merchant vessels and warships side by side. Massive docks stretch into the water, warehouses store goods from across the world, and shipyards operate continuously, constructing new vessels or maintaining existing ones. The harbor is protected by coastal fortifications and the Iron Dragon Fortress, making it both a center of commerce and a formidable military position.
 historyInfo2: High Tide Harbor is renowned throughout the maritime world as one of the finest ports in existence. Merchants from distant lands conduct business here; dwarven traders expand the kingdom's influence across known seas; and naval forces maintain security and protect trade interests. The harbor represents Vondaral's success in becoming more than merely a mountain kingdom—it stands as proof that dwarven excellence can be applied to any endeavor.
 
 ---
 
 title: The Iron Dragon Fortress
+group: Places & Landmarks
 historyInfo1: The Iron Dragon Fortress is a coastal military stronghold protecting High Tide Harbor and Dhon Vondaral's maritime interests. The fortress combines traditional dwarven military architecture with modifications adapted to coastal defense. Massive stone walls face the sea; watchtowers provide early warning of approaching threats; and harbors facilities allow for rapid mobilization of naval forces. The fortress is garrisoned by elite dwarven warriors trained in both land and naval combat.
 historyInfo2: The Iron Dragon Fortress is legendary for its impregnability and its role in defending dwarven trade interests. The fortress has weathered countless attacks and pirate assaults, its defenses proven effective across centuries. The fortress represents Vondaral's commitment to protecting its prosperity and maintaining the security of its maritime ventures against all threats.
 
 ---
 
 title: The Cavern of the Spirits
+group: Places & Landmarks
 historyInfo1: The Cavern of the Spirits is a sacred site unique to Dhon Vondaral, combining both mountain and ocean traditions. The cavern is partially above the water, partially below, with tides flowing through hidden tunnels creating a natural rhythm that dwarves believe connects to spiritual forces. The cavern contains ancient altars and inscriptions from Vondaral's founding, and its waters are believed to possess healing and purifying properties.
 historyInfo2: The Cavern of the Spirits is a place of profound spiritual significance for Vondaral dwarves. Ceremonies honoring both mountain and sea deities are conducted here; warriors seek spiritual fortification before embarking on naval ventures; and scholars study the inscriptions seeking wisdom from the kingdom's founders. The cavern represents the spiritual heart of a kingdom that successfully bridged two worlds.
 
 ---
 
 title: Vondaral Shipyards
+group: Places & Landmarks
 historyInfo1: The Vondaral Shipyards are legendary centers of maritime construction where dwarven craftsmanship is applied to shipbuilding. The yards produce vessels of exceptional quality—faster, more durable, and more capable than those built by other peoples. Each ship is crafted with meticulous attention to detail, combining traditional dwarven engineering principles with maritime innovations developed over centuries of experience.
 historyInfo2: A ship built in Vondaral's yards is a mark of quality and prestige throughout the maritime world. Merchant princes vie for the opportunity to commission vessels here; naval powers seek to purchase or commission warships; and adventurers consider themselves fortunate to serve aboard a Vondaral-built ship. The shipyards represent the pinnacle of dwarven versatility—proof that their mastery extends beyond mountains to encompass the sea itself.

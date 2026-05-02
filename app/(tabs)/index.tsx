@@ -4,6 +4,7 @@ import { useRouter } from "expo-router";
 
 import { ScreenFrame } from "../../src/components/primitives/ScreenFrame";
 import { Hairline } from "../../src/components/primitives/Hairline";
+import { HamburgerButton } from "../../src/components/nav/HamburgerButton";
 import { space, type as typeTokens, type Palette } from "../../src/theme/tokens";
 import { useTheme } from "../../src/theme/useTheme";
 import { useHaptics } from "../../src/hooks/useHaptics";
@@ -16,6 +17,7 @@ export default function HomeRoute() {
 
   return (
     <ScreenFrame>
+      <HamburgerButton />
       <View style={styles.center}>
         <View style={styles.measure}>
           <Text style={styles.kicker}>A WORLD COMPENDIUM</Text>

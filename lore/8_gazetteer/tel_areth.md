@@ -14,47 +14,55 @@ locationInfo2: Beyond the capital lie major cities and centers of power througho
 ---
 
 title: The Crystal Spires
+group: Sanctuaries & Halls
 historyInfo1: The Crystal Spires rise from Tel'Areth's heart as the kingdom's capital and greatest seat of magical power, a city where ancient elven architecture merges with living forest and flowing water in perfect harmony. Towering spires of crystalline stone catch the sunlight and refract it in cascades of colored light that paint the streets below with ever-changing hues. The city was founded millennia ago as a beacon of magical achievement, and it has remained the undisputed center of arcane learning and power throughout all the ages of Amra.
 historyInfo2: The Spires serve as home to the royal palace, the greatest libraries of the known world, and institutions of magical study unmatched by any other civilization. Here, the greatest wizards and sorcerers gather to push the boundaries of what magic can achieve, crafting artifacts of legendary power and unlocking secrets that shape the course of history itself. Yet beneath the city's radiant splendor, political intrigue simmers as factions debate the proper response to human encroachment and darker rumors suggest that King Arathiel's experiments have opened gateways to realms better left sealed.
 
 ---
 
 title: The Arcane University
+group: Sanctuaries & Halls
 historyInfo1: The Arcane University stands as the foremost institution of magical learning in all of Amra, a place where young elves of exceptional talent come to refine their mastery of the arcane arts. The university's halls contain lecture chambers where master mages illuminate the deepest mysteries of magic, laboratories where students conduct experiments pushing the boundaries of what is possible, and vast libraries housing grimoires and tomes of knowledge accumulated over countless centuries. The curriculum encompasses every school of magic—evocation, transmutation, divination, conjuration, and the forbidden arts that lesser institutions dare not teach.
 historyInfo2: Graduation from the Arcane University marks an elf as truly worthy of respect within Tel'Areth's society, and many of the kingdom's greatest archmages trace their lineage directly back to studies within these hallowed halls. The university maintains strict neutrality in the conflict with Castell, though many of its graduates have chosen to join the war effort, putting their magical prowess to service in defense of the kingdom.
 
 ---
 
 title: The Temple of Stars
+group: Sanctuaries & Halls
 historyInfo1: High upon a mountain overlooking the Crystal Spires stands the Temple of Stars, a sacred place where the elves of Tel'Areth commune with the celestial spheres and seek guidance from the stars themselves. The temple's architecture reflects celestial patterns, its domed ceiling pierced with carefully positioned apertures that allow starlight to illuminate the sanctum in patterns that shift with the seasons and years. Priests and priestesses of the temple have long served as advisors to the royal court, interpreting the movements of celestial bodies to discern the will of fate itself.
 historyInfo2: Pilgrims journey from across Tel'Areth to witness the great ceremonies performed within the temple's halls, particularly during the solstices and equinoxes when the alignment of stars carries special significance. The temple's quietude provides respite from the turbulent world, and many seek spiritual renewal within its crystalline walls as the shadow of war lengthens across the kingdom.
 
 ---
 
 title: The Groves of Healing
+group: Wilds & Borders
 historyInfo1: Deep within Tel'Areth's ancient forests lies the Groves of Healing, a sanctuary where master herbalists and healers cultivate plants of extraordinary power and medicinal virtue. The groves have been tended for millennia, with certain plants growing nowhere else in the world, their seeds passed down through generations of careful stewardship. Rare flowers bloom in impossible colors, their petals containing potent essences that can mend wounds, cure diseases, and restore vitality to even those at the brink of death.
 historyInfo2: The healers of the Groves are revered throughout Tel'Areth and beyond, and their remedies are sought by nobles and common folk alike, though the cost of their most potent preparations is considerable. In times of war, the Groves take on added significance as a source of healing for the wounded, and many fear that if these sacred lands fall into human hands or are despoiled by conflict, the loss would be irreplaceable.
 
 ---
 
 title: The Forges of Starlight
+group: Sanctuaries & Halls
 historyInfo1: Hidden within mountain caverns where veins of mithril and other rare metals run deep, the Forges of Starlight are where master craftspeople of Tel'Areth shape magical artifacts of extraordinary power and beauty. The forges themselves are not of common fire but of contained starlight, kept at temperatures that allow the shaping of metals normally unworkable by conventional means. These master smiths blend metalcraft with magic, creating weapons and armor that sing with enchantment and items of power sought by the greatest heroes throughout Amra.
 historyInfo2: Each artifact produced by the Forges bears the mark of its maker and is considered a masterwork worthy of legend. The process of crafting such items takes years or even decades, and only the most talented elven smiths are permitted to work at the Forges. During times of peace, the output of these forges supplies the magical markets of many kingdoms; during war, their production is directed entirely toward equipping Tel'Areth's forces.
 
 ---
 
 title: The Tower of Náriel
+group: Sanctuaries & Halls
 historyInfo1: Perched upon a high peak overlooking the Crystal Spires stands the Tower of Náriel, a solitary structure where the Princess conducts her arcane research and pursues forbidden knowledge that most mages consider too dangerous to explore. The tower rises impossibly high, its walls shimmering with protective enchantments and wards that discourage casual visitors. Within its depths, Náriel maintains laboratories, libraries, and chambers dedicated to unlocking secrets of magic that have eluded lesser practitioners.
 historyInfo2: The tower is off-limits to all but the most trusted of the Princess's students and closest allies, and many whisper that the experiments conducted within its walls push the boundaries of what should be attempted. Yet Náriel's discoveries have on numerous occasions provided insights that have proven invaluable to Tel'Areth's advancement, and few question her dedication to expanding the frontiers of magical knowledge despite the controversial methods she employs.
 
 ---
 
 title: The Contested Borderlands
+group: Wilds & Borders
 historyInfo1: Along Tel'Areth's western edge lies the Contested Borderlands, a sprawling region of forests, rivers, and ancient groves where the territorial claims of Tel'Areth and the human kingdom of Castell overlap and conflict. Sacred groves sacred to the elves have been logged by human settlers, timber that the elves consider part of their birthright; trade routes have been diverted to benefit human merchants; and human settlements have expanded into lands that the elves maintain are rightfully theirs. The region is scarred by decades of skirmishes, ambushes, and retaliatory raids that have left many settlements in ruins and the land itself grieving.
 historyInfo2: Fortified outposts dot the borderlands, each manned by Tel'Areth's warriors who watch for human encroachment and respond swiftly to any perceived threat. Ancient standing stones mark the boundaries as the elves understand them, and the forests themselves seem to resist human presence with unusual hostility. The borderlands have become a crucible where elven and human warriors clash, and many fear this region will be where the larger conflict between the kingdoms finally erupts into open war.
 
 ---
 
 title: The Library of Ages
+group: Sanctuaries & Halls
 historyInfo1: Within the Crystal Spires stands the Library of Ages, a vast repository of knowledge containing millions of volumes, scrolls, and manuscripts accumulated over the entire span of Tel'Areth's history. The library's halls stretch for miles, organized by subject matter in a system so complex that only trained librarians can navigate its depths with confidence. Here are preserved the complete historical records of the elven kingdoms, treatises on every conceivable subject, magical texts of immeasurable value, and accounts of events that stretch back beyond recorded time.
 historyInfo2: Access to the Library is restricted, with different sections reserved for scholars of various levels of advancement and trustworthiness. The deepest archives contain forbidden knowledge deemed too dangerous for general circulation—accounts of ancient evils, instructions for forbidden spells, and records that the royal court has chosen to suppress. Many scholars have spent entire lifetimes studying the Library's contents without fully understanding the depths of what it contains.

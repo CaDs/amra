@@ -45,9 +45,9 @@ const makeStyles = (palette: Palette) =>
     outer: {
       width: "100%",
       alignItems: "flex-start",
-      justifyContent: "flex-end",
+      justifyContent: "flex-start",
       paddingHorizontal: space.xl,
-      paddingBottom: space.huge,
+      paddingTop: space.giant + space.md,
     },
     inner: {
       alignItems: "flex-start",
