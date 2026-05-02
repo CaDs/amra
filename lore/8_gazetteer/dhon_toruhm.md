@@ -14,35 +14,41 @@ locationInfo2: Dhon Toruhm contains many sites of great significance: Torum Keep
 ---
 
 title: Silverbeard Clan
+group: Clans
 historyInfo1: The Silverbeard Clan traces its lineage to Torum Silverbeard himself, the legendary founder of Dhon Toruhm. Torum was a visionary leader whose wisdom and martial prowess united disparate dwarven settlements into a powerful kingdom. His legacy—commitment to excellence, honor, and the advancement of dwarven civilization—remains the guiding principle of the clan to this day. The Silverbeards have provided High Kings and great leaders throughout the kingdom's history, each adding to the family's storied legacy.
 historyInfo2: The Silverbeards remain the kingdom's royal family, their authority respected and their leadership expected to embody the highest ideals of dwarven civilization. Successive High Kings have guided Dhon Toruhm through triumphs and challenges, always conscious of their duty to preserve and advance the kingdom's ancient legacy.
 
 ---
 
 title: Thrond-Hul
+group: Places & Landmarks
 historyInfo1: Thrond-Hul, the ancient capital of Dhon Toruhm, is one of the greatest cities in all of Amra. Its vast halls are carved from solid rock and adorned with architecture that speaks to centuries of masterful craftsmanship. Statues of legendary dwarves line grand avenues; fountains of clear water flow through the city; and magical light illuminates even the deepest chambers. The city is a marvel of engineering and artistry, a testament to what dwarven determination and skill can achieve across generations.
 historyInfo2: At the heart of Thrond-Hul are the Great Forges—legendary smithies where the finest weapons and armor in the world are created. The city also houses vast libraries containing dwarven knowledge from ages past, temples dedicated to the dwarven gods, and markets where goods from across Amra are traded. Thrond-Hul is a city of power, beauty, and ancient majesty—the undisputed center of dwarven civilization.
 
 ---
 
 title: The Great Forges
+group: Places & Landmarks
 historyInfo1: The Great Forges of Thrond-Hul are legendary throughout Amra, producing weapons and armor of unparalleled quality and craftsmanship. These forges have operated continuously for millennia, tended by master smiths whose names are known in legend. Each piece created here is a masterwork, imbued with the skill and dedication of generations of craftsmen.
 historyInfo2: To own a weapon forged in Dhon Toruhm is to possess a piece of dwarven excellence. Such weapons are sought after by warriors, kings, and adventurers throughout the world. The Great Forges represent the pinnacle of dwarven achievement in metalworking—a legacy that has endured unchanged for countless centuries.
 
 ---
 
 title: Hall of the Kings
+group: Places & Landmarks
 historyInfo1: The Hall of the Kings is a burial place and sacred chamber where the High Kings and great leaders of Dhon Toruhm rest for eternity. The hall is filled with magnificent stone sarcophagi, each carved with the likeness of the king it contains and inscribed with records of their deeds. The walls are adorned with tapestries depicting great moments in the kingdom's history, and the air itself seems to pulse with the weight of centuries.
 historyInfo2: The Hall of the Kings is a place of profound reverence in dwarven culture. Here, beneath the mountains, the greatest leaders of the dwarven peoples are honored for eternity. The hall is closed to all but the highest ranking dwarves and those granted special permission—it remains a sacred place where the kingdom's greatest traditions are preserved.
 
 ---
 
 title: Torum Keep
+group: Places & Landmarks
 historyInfo1: Torum Keep stands as a fortress stronghold and enduring symbol of Dhon Toruhm's military might. Built by Torum Silverbeard himself, the keep has been expanded and reinforced over the centuries while maintaining its original design and function. The keep serves as a garrison, command center, and training ground for the kingdom's elite military forces.
 historyInfo2: The keep is one of the most formidable fortresses in all of Amra, its walls nearly impregnable and its garrison legendary for their prowess. The keep represents Dhon Toruhm's commitment to strength and defense, and its reputation for impregnability is well-earned through countless centuries of proven defensive capability.
 
 ---
 
 title: The Torum-dor Mines
+group: Places & Landmarks
 historyInfo1: The Torum-dor Mines are legendary sources of precious materials unavailable anywhere else in Amra. These deep excavations yield ores and gems of exceptional quality, materials essential to the creation of the kingdom's legendary weapons and armor. The mines are rich with resources yet also hazardous—deeper levels are dangerous, and strange phenomena sometimes occur in the deepest reaches.
 historyInfo2: The Torum-dor Mines represent the foundation of Dhon Toruhm's wealth and power. Control of these mines gives the kingdom resources unmatched by any other power in the world. The mines are carefully guarded and managed, their secrets closely held by the kingdom.

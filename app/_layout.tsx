@@ -27,9 +27,33 @@ function ThemedStack() {
         }}
       >
         <Stack.Screen name="(tabs)" />
-        <Stack.Screen name="gazetteer" options={{ animation: "slide_from_right" }} />
-        <Stack.Screen name="[tomeId]/index" options={{ animation: "slide_from_bottom" }} />
-        <Stack.Screen name="[tomeId]/[entryId]" options={{ animation: "slide_from_right" }} />
+        <Stack.Screen
+          name="gazetteer"
+          options={{
+            animation: "slide_from_right",
+            gestureEnabled: true,
+            gestureDirection: "horizontal",
+            fullScreenGestureEnabled: true,
+          }}
+        />
+        <Stack.Screen
+          name="[tomeId]/index"
+          options={{
+            animation: "slide_from_bottom",
+            gestureEnabled: true,
+            gestureDirection: "horizontal",
+            fullScreenGestureEnabled: true,
+          }}
+        />
+        <Stack.Screen
+          name="[tomeId]/[entryId]"
+          options={{
+            animation: "slide_from_right",
+            gestureEnabled: true,
+            gestureDirection: "horizontal",
+            fullScreenGestureEnabled: true,
+          }}
+        />
       </Stack>
     </>
   );

@@ -101,63 +101,63 @@ historyInfo2: Humans vary greatly in height and build, with skin tones, hair col
 
 title: Castilian
 subTitle: Warriors of the Eastern Realm
-group: Cultures of Humanity
+group: Humans
 historyInfo1: Castell humans are known for their prowess in battle and their ability to lead. The noble House Dawnspear claims this lineage, and Castilians are skilled warriors and natural commanders. They value honor, loyalty, and martial excellence, serving as the backbone of Castell's military might and governance.
 
 ---
 
 title: Aregones
 subTitle: Masters of Trade and Diplomacy
-group: Cultures of Humanity
+group: Humans
 historyInfo1: Aregor's humans are experts in trade and diplomacy, their capital Monedo serving as a beacon of commerce and culture. They have cultivated extensive trade networks and possess unparalleled skill in negotiation and relationship-building. Aregones are multilingual and widely traveled, carrying goods and knowledge across the continent.
 
 ---
 
 title: Alkebuan
 subTitle: Children of the Southern Sun
-group: Cultures of Humanity
+group: Humans
 historyInfo1: Alkebu humans are resilient and have a strong connection to nature and the natural cycles of the land. They possess remarkable stamina and recovery, honed by life in harsh climates. Alkebuan culture emphasizes survival, strength, and a deep respect for the natural world and their place within it.
 
 ---
 
 title: Tianzhnes
 subTitle: Artisans and Craftspeople
-group: Cultures of Humanity
+group: Humans
 historyInfo1: Tianzhu humans are skilled in arts and crafts, their culture celebrating beauty and innovation in all forms. They are talented painters, sculptors, musicians, and makers, with an innate ability to master various tools and techniques. Tianzhnes believe that through art, they express the divine nature of creation itself.
 
 ---
 
 title: Banlayan
 subTitle: Masters of Intrigue and Adaptation
-group: Cultures of Humanity
+group: Humans
 historyInfo1: Banlayan humans are known for their cunning and ability to adapt to any situation. Living along the western coast, they have learned to navigate treacherous politics and shifting circumstances. Banayans are skilled negotiators and problem-solvers, capable of changing tactics to achieve their goals.
 
 ---
 
 title: Yamatian
 subTitle: Warriors of Discipline and Spirit
-group: Cultures of Humanity
+group: Humans
 historyInfo1: Yamato humans have a strong spiritual connection and are known for their discipline and martial training. They follow ancient traditions that honor both body and spirit, combining physical prowess with spiritual enlightenment. Yamatians value meditation, honor, and the pursuit of mastery through dedicated practice.
 
 ---
 
 title: Manajurian
 subTitle: Masters of the Arcane
-group: Cultures of Humanity
+group: Humans
 historyInfo1: Manajur humans are known for their ability to master arcane magic, their scholars and mages renowned throughout Amra. Living in lands where magic thrives, Manajurians have developed deep knowledge of the arcane arts. They maintain great libraries and schools of magic where the secrets of sorcery are preserved and taught.
 
 ---
 
 title: Skaptan
 subTitle: Cold-Resistant Survivors
-group: Cultures of Humanity
+group: Humans
 historyInfo1: Skapta humans are cold-hardy and skilled at surviving in extreme climates. The frozen highlands of Skapta have forged a people of remarkable resilience and strength. Skaptans are immune to the worst effects of frigid temperatures and possess remarkable strength and determination.
 
 ---
 
 title: Kievanian
 subTitle: Brave Hearts of the North
-group: Cultures of Humanity
+group: Humans
 historyInfo1: Kievan humans are known for their bravery and indomitable spirit. They have weathered countless trials and emerged stronger each time. Kievanians are skilled warriors who excel in combat, possessing remarkable courage in the face of overwhelming odds and the ability to survive wounds that would fell lesser people.
 
 ---

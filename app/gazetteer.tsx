@@ -1,6 +1,12 @@
-import { useMemo } from "react";
-import { useRouter } from "expo-router";
-import { Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
+import { useCallback, useEffect, useMemo, useRef } from "react";
+import { useNavigation, useRouter } from "expo-router";
+import { Pressable, StyleSheet, Text, View } from "react-native";
+import Animated, {
+  runOnJS,
+  useAnimatedReaction,
+  useAnimatedScrollHandler,
+  useSharedValue,
+} from "react-native-reanimated";
 import { ScreenFrame } from "../src/components/primitives/ScreenFrame";
 import { Hairline } from "../src/components/primitives/Hairline";
 import { getRegions } from "../src/data/loadLore";
@@ -10,21 +16,52 @@ import { useHaptics } from "../src/hooks/useHaptics";
 
 export default function GazetteerRoute() {
   const router = useRouter();
+  const navigation = useNavigation();
   const { palette } = useTheme();
   const haptics = useHaptics();
   const styles = useMemo(() => makeStyles(palette), [palette]);
   const regions = getRegions();
 
+  const hapticsRef = useRef(haptics);
+  hapticsRef.current = haptics;
+  useEffect(() => {
+    const unsub = navigation.addListener("beforeRemove" as never, () => {
+      hapticsRef.current.light();
+    });
+    return unsub;
+  }, [navigation]);
+
+  const scrollY = useSharedValue(0);
+  const onScroll = useAnimatedScrollHandler((e) => {
+    scrollY.value = e.contentOffset.y;
+  });
+  const fireScrollHaptic = useCallback(() => hapticsRef.current.selection(), []);
+  const lastHapticY = useSharedValue(0);
+  useAnimatedReaction(
+    () => scrollY.value,
+    (y, prev) => {
+      if (prev === null) {
+        lastHapticY.value = y;
+        return;
+      }
+      if (Math.abs(y - lastHapticY.value) >= 120) {
+        lastHapticY.value = y;
+        runOnJS(fireScrollHaptic)();
+      }
+    },
+  );
+
   return (
     <ScreenFrame>
-      <ScrollView contentContainerStyle={styles.content}>
+      <Animated.ScrollView
+        contentContainerStyle={styles.content}
+        onScroll={onScroll}
+        scrollEventThrottle={16}
+      >
         <View style={styles.measure}>
         <Pressable
-          style={styles.back}
-          onPress={() => {
-            haptics.light();
-            router.back();
-          }}
+          style={({ pressed }) => [styles.back, pressed && styles.backPressed]}
+          onPress={() => router.back()}
           accessibilityRole="button"
           accessibilityLabel="Back"
         >
@@ -44,7 +81,7 @@ export default function GazetteerRoute() {
           {regions.map((r, i) => (
             <Pressable
               key={r.id}
-              style={styles.tile}
+              style={({ pressed }) => [styles.tile, pressed && styles.tilePressed]}
               onPress={() => {
                 haptics.medium();
                 router.push({ pathname: "/[tomeId]", params: { tomeId: r.id } });
@@ -62,7 +99,7 @@ export default function GazetteerRoute() {
           ))}
         </View>
         </View>
-      </ScrollView>
+      </Animated.ScrollView>
     </ScreenFrame>
   );
 }
@@ -72,6 +109,7 @@ const makeStyles = (palette: Palette) =>
     content: { padding: space.xl, paddingBottom: space.giant, paddingTop: space.huge, alignItems: "center" },
     measure: { width: "100%", maxWidth: 760, gap: space.xl },
     back: { paddingVertical: space.xs, alignSelf: "flex-start" },
+    backPressed: { opacity: 0.45 },
     backLabel: { ...type.label, color: palette.textMuted },
     header: { gap: space.sm },
     kicker: { ...type.label, color: palette.textMuted },
@@ -85,6 +123,10 @@ const makeStyles = (palette: Palette) =>
       borderRadius: 8,
       backgroundColor: palette.bgSurface,
       gap: space.xs,
+    },
+    tilePressed: {
+      opacity: 0.55,
+      borderColor: palette.dener,
     },
     tileIndex: { ...type.label, color: palette.dener },
     tileTitle: { ...type.title, fontSize: 22, lineHeight: 26, color: palette.textPrimary },

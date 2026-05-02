@@ -85,7 +85,11 @@ function IndexStripGroup({
         contentContainerStyle={groupStyles.list}
         renderItem={({ item, index }) => (
           <Pressable
-            style={[groupStyles.card, isPhone ? groupStyles.cardPhone : groupStyles.cardWide]}
+            style={({ pressed }) => [
+              groupStyles.card,
+              isPhone ? groupStyles.cardPhone : groupStyles.cardWide,
+              pressed && groupStyles.cardPressed,
+            ]}
             onPress={() => onPress(item.id)}
             accessibilityRole="button"
             accessibilityLabel={`Open ${item.title}`}
@@ -146,6 +150,10 @@ const makeStyles = (palette: Palette) =>
       backgroundColor: palette.bgSurface,
       gap: space.sm,
       justifyContent: "space-between",
+    },
+    cardPressed: {
+      opacity: 0.55,
+      borderColor: palette.dener,
     },
     cardPhone: {
       width: 230,

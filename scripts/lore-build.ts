@@ -136,7 +136,25 @@ function buildTomeFromFile(
     entry.id = candidateId;
     subEntries.push(entry);
   }
-  const tome: Tome = { id, kind, order, overview: overviewEntry, subEntries, wordCount: 0 };
+
+  const titles = new Set(subEntries.map((e) => e.title));
+  const finalSubEntries: Entry[] = [];
+  const injectedGroups = new Set<string>();
+  for (const entry of subEntries) {
+    if (entry.group && !titles.has(entry.group) && !injectedGroups.has(entry.group)) {
+      let parentId = slug(entry.group);
+      let suffix = 2;
+      while (seenIds.has(parentId)) {
+        parentId = `${slug(entry.group)}-${suffix++}`;
+      }
+      seenIds.add(parentId);
+      finalSubEntries.push({ id: parentId, title: entry.group });
+      injectedGroups.add(entry.group);
+    }
+    finalSubEntries.push(entry);
+  }
+
+  const tome: Tome = { id, kind, order, overview: overviewEntry, subEntries: finalSubEntries, wordCount: 0 };
   tome.wordCount = tomeWordCount(tome);
   return tome;
 }
