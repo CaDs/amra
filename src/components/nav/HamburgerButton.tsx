@@ -1,11 +1,9 @@
-import { useMemo } from "react";
 import { Image, Pressable, StyleSheet, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useNavigation } from "expo-router";
 import { DrawerActions } from "@react-navigation/native";
 
-import { space, type Palette } from "../../theme/tokens";
-import { useTheme } from "../../theme/useTheme";
+import { onImage, space } from "../../theme/tokens";
 import { useHaptics } from "../../hooks/useHaptics";
 
 const logoMark = require("../../../assets/images/logo-mark.png");
@@ -13,9 +11,7 @@ const logoMark = require("../../../assets/images/logo-mark.png");
 export function HamburgerButton() {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
-  const { palette } = useTheme();
   const haptics = useHaptics();
-  const styles = useMemo(() => makeStyles(palette), [palette]);
 
   const onPress = () => {
     haptics.light();
@@ -37,28 +33,32 @@ export function HamburgerButton() {
   );
 }
 
-const makeStyles = (palette: Palette) =>
-  StyleSheet.create({
-    wrap: {
-      position: "absolute",
-      left: space.lg,
-      zIndex: 50,
-    },
-    button: {
-      width: 40,
-      height: 40,
-      alignItems: "center",
-      justifyContent: "center",
-      borderRadius: 20,
-      backgroundColor: palette.bgSurface,
-      borderWidth: StyleSheet.hairlineWidth,
-      borderColor: palette.borderSubtle,
-    },
-    buttonPressed: {
-      opacity: 0.55,
-    },
-    logo: {
-      width: 24,
-      height: 24,
-    },
-  });
+const styles = StyleSheet.create({
+  wrap: {
+    position: "absolute",
+    left: space.lg,
+    zIndex: 50,
+  },
+  button: {
+    width: 40,
+    height: 40,
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 20,
+    backgroundColor: onImage.bgSurface,
+    borderWidth: 1,
+    borderColor: onImage.borderEmphasis,
+    shadowColor: "#000",
+    shadowOpacity: 0.18,
+    shadowRadius: 6,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 3,
+  },
+  buttonPressed: {
+    opacity: 0.55,
+  },
+  logo: {
+    width: 24,
+    height: 24,
+  },
+});

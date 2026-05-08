@@ -6,7 +6,7 @@ import Animated, {
   type SharedValue,
   useAnimatedStyle,
 } from "react-native-reanimated";
-import { space, type, type Palette } from "../../theme/tokens";
+import { onImage, space, type, type Palette } from "../../theme/tokens";
 import { useTheme } from "../../theme/useTheme";
 import { Hairline } from "../primitives/Hairline";
 import { FocalImage } from "../primitives/FocalImage";
@@ -23,7 +23,9 @@ type Props = {
 
 export function DetailHero({ title, subTitle, kicker, scrollY, height, heroImage }: Props) {
   const { palette } = useTheme();
-  const styles = useMemo(() => makeStyles(palette), [palette]);
+  const onPhoto = !!heroImage;
+  const styles = useMemo(() => makeStyles(palette, onPhoto), [palette, onPhoto]);
+  const denerColor = onPhoto ? onImage.dener : palette.dener;
 
   const heroStyle = useAnimatedStyle(() => {
     const opacity = interpolate(scrollY.value, [0, height * 0.6, height], [1, 0.5, 0], Extrapolation.CLAMP);
@@ -49,14 +51,25 @@ export function DetailHero({ title, subTitle, kicker, scrollY, height, heroImage
         <Text style={styles.kicker}>{kicker}</Text>
         <Text style={styles.title}>{title}</Text>
         {subTitle ? <Text style={styles.subtitle}>{subTitle.toLowerCase()}</Text> : null}
-        <Hairline width={56} style={{ marginTop: space.lg, backgroundColor: palette.dener }} />
+        <Hairline width={56} style={{ marginTop: space.lg, backgroundColor: denerColor }} />
       </Animated.View>
     </View>
   );
 }
 
-const makeStyles = (palette: Palette) =>
-  StyleSheet.create({
+const makeStyles = (palette: Palette, onPhoto: boolean) => {
+  const c = onPhoto
+    ? {
+        kicker: onImage.textMuted,
+        title: onImage.textPrimary,
+        subtitle: onImage.textSecondary,
+      }
+    : {
+        kicker: palette.textMuted,
+        title: palette.textPrimary,
+        subtitle: palette.textSecondary,
+      };
+  return StyleSheet.create({
     outer: {
       width: "100%",
       alignItems: "flex-start",
@@ -70,20 +83,21 @@ const makeStyles = (palette: Palette) =>
     },
     kicker: {
       ...type.label,
-      color: palette.textMuted,
+      color: c.kicker,
       marginBottom: space.sm,
     },
     title: {
       ...type.display,
-      color: palette.textPrimary,
+      color: c.title,
     },
     subtitle: {
       ...type.subtitle,
-      color: palette.textSecondary,
+      color: c.subtitle,
       marginTop: space.xs,
     },
     imageOverlay: {
       ...StyleSheet.absoluteFillObject,
-      backgroundColor: "rgba(14, 15, 18, 0.55)",
+      backgroundColor: onImage.scrim,
     },
   });
+};

@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { useRouter } from "expo-router";
 
@@ -6,17 +5,14 @@ import { ScreenFrame } from "../../src/components/primitives/ScreenFrame";
 import { Hairline } from "../../src/components/primitives/Hairline";
 import { FocalImage } from "../../src/components/primitives/FocalImage";
 import { HamburgerButton } from "../../src/components/nav/HamburgerButton";
-import { space, type as typeTokens, type Palette } from "../../src/theme/tokens";
-import { useTheme } from "../../src/theme/useTheme";
+import { onImage, space, type as typeTokens } from "../../src/theme/tokens";
 import { useHaptics } from "../../src/hooks/useHaptics";
 
 const welcomeImage = require("../../assets/images/welcome.webp");
 
 export default function HomeRoute() {
   const router = useRouter();
-  const { palette } = useTheme();
   const haptics = useHaptics();
-  const styles = useMemo(() => makeStyles(palette), [palette]);
 
   return (
     <ScreenFrame>
@@ -52,62 +48,61 @@ export default function HomeRoute() {
   );
 }
 
-const makeStyles = (palette: Palette) =>
-  StyleSheet.create({
-    overlay: {
-      ...StyleSheet.absoluteFillObject,
-      backgroundColor: "rgba(14, 15, 18, 0.55)",
-    },
-    center: {
-      flex: 1,
-      alignItems: "center",
-      justifyContent: "center",
-      paddingHorizontal: space.xl,
-    },
-    measure: {
-      width: "100%",
-      maxWidth: 560,
-      alignItems: "flex-start",
-      gap: space.md,
-    },
-    kicker: {
-      ...typeTokens.label,
-      color: palette.dener,
-    },
-    welcome: {
-      ...typeTokens.title,
-      color: palette.textSecondary,
-      fontSize: 22,
-      lineHeight: 28,
-      marginTop: space.xs,
-    },
-    title: {
-      ...typeTokens.display,
-      color: palette.textPrimary,
-      marginTop: -space.xxs,
-    },
-    rule: {
-      backgroundColor: palette.iothas,
-      marginTop: space.sm,
-    },
-    lede: {
-      ...typeTokens.bodyLg,
-      color: palette.textSecondary,
-      marginTop: space.xs,
-    },
-    cta: {
-      marginTop: space.xl,
-      paddingVertical: space.md,
-      paddingHorizontal: space.xl,
-      borderWidth: 1,
-      borderColor: palette.borderEmphasis,
-      borderRadius: 999,
-      backgroundColor: palette.bgSurface,
-    },
-    ctaLabel: {
-      ...typeTokens.label,
-      color: palette.textPrimary,
-      fontSize: 12,
-      letterSpacing: 1.4,
-    },
-  });
+const styles = StyleSheet.create({
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: onImage.scrim,
+  },
+  center: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: space.xl,
+  },
+  measure: {
+    width: "100%",
+    maxWidth: 560,
+    alignItems: "flex-start",
+    gap: space.md,
+  },
+  kicker: {
+    ...typeTokens.label,
+    color: onImage.dener,
+  },
+  welcome: {
+    ...typeTokens.title,
+    color: onImage.textSecondary,
+    fontSize: 22,
+    lineHeight: 28,
+    marginTop: space.xs,
+  },
+  title: {
+    ...typeTokens.display,
+    color: onImage.textPrimary,
+    marginTop: -space.xxs,
+  },
+  rule: {
+    backgroundColor: onImage.iothas,
+    marginTop: space.sm,
+  },
+  lede: {
+    ...typeTokens.bodyLg,
+    color: onImage.textSecondary,
+    marginTop: space.xs,
+  },
+  cta: {
+    marginTop: space.xl,
+    paddingVertical: space.md,
+    paddingHorizontal: space.xl,
+    borderWidth: 1,
+    borderColor: "rgba(244, 244, 246, 0.4)",
+    borderRadius: 999,
+    backgroundColor: "rgba(244, 244, 246, 0.92)",
+  },
+  ctaLabel: {
+    ...typeTokens.label,
+    color: "#16181d",
+    fontSize: 12,
+    letterSpacing: 1.4,
+  },
+});

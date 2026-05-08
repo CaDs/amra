@@ -51,6 +51,24 @@ export const lightPalette: Palette = {
   scrim: "rgba(245, 243, 238, 0.6)",
 };
 
+// Fixed colors for text and chrome overlaid on hero photography, and for
+// floating chrome that always carries the brand mark. The hero images are
+// always dark and the brand logo is a cream letterform on transparent
+// background, so this palette never theme-shifts — otherwise dark text in
+// light mode would vanish into the photo, and the cream brand mark would
+// vanish into a cream surface.
+export const onImage = {
+  textPrimary: "#f4f4f6",
+  textSecondary: "#d8d4cc",
+  textMuted: "#b0aca4",
+  textFaint: "#8a8680",
+  dener: "#b8c4dc",
+  iothas: "#e88080",
+  scrim: "rgba(14, 15, 18, 0.55)",
+  bgSurface: "#16181d",
+  borderEmphasis: "#33363c",
+} as const;
+
 export const fonts = {
   sans: "Inter_400Regular",
   sansMed: "Inter_500Medium",

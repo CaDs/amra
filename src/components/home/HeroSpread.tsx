@@ -6,7 +6,7 @@ import Animated, {
   type SharedValue,
   useAnimatedStyle,
 } from "react-native-reanimated";
-import { space, type, type Palette } from "../../theme/tokens";
+import { onImage, space, type, type Palette } from "../../theme/tokens";
 import { useTheme } from "../../theme/useTheme";
 import { useHaptics } from "../../hooks/useHaptics";
 import type { HomeSpread as HomeSpreadData } from "../../types/lore";
@@ -26,7 +26,8 @@ type Props = {
 export function HeroSpread({ spread, index, total, scrollY, pageHeight, onOpen, heroImage }: Props) {
   const { palette } = useTheme();
   const haptics = useHaptics();
-  const styles = useMemo(() => makeStyles(palette), [palette]);
+  const onPhoto = !!heroImage;
+  const styles = useMemo(() => makeStyles(palette, onPhoto), [palette, onPhoto]);
 
   const range = useMemo(
     () => [(index - 1) * pageHeight, index * pageHeight, (index + 1) * pageHeight] as const,
@@ -104,8 +105,25 @@ export function HeroSpread({ spread, index, total, scrollY, pageHeight, onOpen, 
   );
 }
 
-const makeStyles = (palette: Palette) =>
-  StyleSheet.create({
+const makeStyles = (palette: Palette, onPhoto: boolean) => {
+  const c = onPhoto
+    ? {
+        kicker: onImage.textMuted,
+        title: onImage.textPrimary,
+        subtitle: onImage.textSecondary,
+        pullQuoteTop: onImage.textPrimary,
+        pullQuoteBottom: onImage.iothas,
+        label: onImage.textFaint,
+      }
+    : {
+        kicker: palette.textMuted,
+        title: palette.textPrimary,
+        subtitle: palette.textSecondary,
+        pullQuoteTop: palette.textPrimary,
+        pullQuoteBottom: palette.iothas,
+        label: palette.textFaint,
+      };
+  return StyleSheet.create({
     page: {
       width: "100%",
       paddingHorizontal: space.xl,
@@ -122,7 +140,7 @@ const makeStyles = (palette: Palette) =>
     chromeBottom: {},
     imageOverlay: {
       ...StyleSheet.absoluteFillObject,
-      backgroundColor: "rgba(14, 15, 18, 0.55)",
+      backgroundColor: onImage.scrim,
     },
     heroButton: {
       flex: 1,
@@ -134,16 +152,16 @@ const makeStyles = (palette: Palette) =>
     },
     kicker: {
       ...type.label,
-      color: palette.textMuted,
+      color: c.kicker,
       marginBottom: space.xs,
     },
     heroTitle: {
       ...type.hero,
-      color: palette.textPrimary,
+      color: c.title,
     },
     heroSubtitle: {
       ...type.subtitle,
-      color: palette.textSecondary,
+      color: c.subtitle,
       marginTop: space.xxs,
     },
     pullQuoteRow: {
@@ -153,16 +171,17 @@ const makeStyles = (palette: Palette) =>
       ...type.subtitle,
       fontSize: 20,
       lineHeight: 28,
-      color: palette.textPrimary,
+      color: c.pullQuoteTop,
     },
     pullQuoteBottom: {
       ...type.subtitle,
       fontSize: 20,
       lineHeight: 28,
-      color: palette.iothas,
+      color: c.pullQuoteBottom,
     },
     label: {
       ...type.label,
-      color: palette.textFaint,
+      color: c.label,
     },
   });
+};
