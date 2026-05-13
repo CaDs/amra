@@ -8,6 +8,7 @@ import Animated, {
 } from "react-native-reanimated";
 import { onImage, space, type, type Palette } from "../../theme/tokens";
 import { useTheme } from "../../theme/useTheme";
+import { useKenBurns } from "../../hooks/useKenBurns";
 import { Hairline } from "../primitives/Hairline";
 import { FocalImage } from "../primitives/FocalImage";
 import type { HeroImage } from "../../data/heroImages";
@@ -19,12 +20,14 @@ type Props = {
   scrollY: SharedValue<number>;
   height: number;
   heroImage?: HeroImage;
+  compact?: boolean;
 };
 
-export function DetailHero({ title, subTitle, kicker, scrollY, height, heroImage }: Props) {
+export function DetailHero({ title, subTitle, kicker, scrollY, height, heroImage, compact }: Props) {
   const { palette } = useTheme();
   const onPhoto = !!heroImage;
-  const styles = useMemo(() => makeStyles(palette, onPhoto), [palette, onPhoto]);
+  const styles = useMemo(() => makeStyles(palette, onPhoto, !!compact), [palette, onPhoto, compact]);
+  const ambientStyle = useKenBurns();
   const denerColor = onPhoto ? onImage.dener : palette.dener;
 
   const heroStyle = useAnimatedStyle(() => {
@@ -42,8 +45,10 @@ export function DetailHero({ title, subTitle, kicker, scrollY, height, heroImage
   return (
     <View style={[styles.outer, { height, pointerEvents: "none" }]}>
       {heroImage ? (
-        <Animated.View style={[StyleSheet.absoluteFill, imageStyle]} pointerEvents="none">
-          <FocalImage source={heroImage.source} {...(heroImage.focal ? { focal: heroImage.focal } : {})} />
+        <Animated.View style={[styles.imageContainer, imageStyle]} pointerEvents="none">
+          <Animated.View style={[styles.ambientCover, ambientStyle]} pointerEvents="none">
+            <FocalImage source={heroImage.source} {...(heroImage.focal ? { focal: heroImage.focal } : {})} />
+          </Animated.View>
           <View style={styles.imageOverlay} />
         </Animated.View>
       ) : null}
@@ -57,7 +62,7 @@ export function DetailHero({ title, subTitle, kicker, scrollY, height, heroImage
   );
 }
 
-const makeStyles = (palette: Palette, onPhoto: boolean) => {
+const makeStyles = (palette: Palette, onPhoto: boolean, compact: boolean) => {
   const c = onPhoto
     ? {
         kicker: onImage.textMuted,
@@ -87,13 +92,24 @@ const makeStyles = (palette: Palette, onPhoto: boolean) => {
       marginBottom: space.sm,
     },
     title: {
-      ...type.display,
+      ...(compact ? type.hero : type.display),
       color: c.title,
     },
     subtitle: {
       ...type.subtitle,
       color: c.subtitle,
       marginTop: space.xs,
+    },
+    imageContainer: {
+      ...StyleSheet.absoluteFillObject,
+      overflow: "hidden",
+    },
+    ambientCover: {
+      position: "absolute",
+      top: -24,
+      bottom: -24,
+      left: -24,
+      right: -24,
     },
     imageOverlay: {
       ...StyleSheet.absoluteFillObject,

@@ -16,6 +16,7 @@ import type { Tome } from "../../types/lore";
 import { getHeroImage } from "../../data/heroImages";
 import { Callouts } from "./Callouts";
 import { DetailHero } from "./DetailHero";
+import { LoreBody } from "./LoreBody";
 import { PullQuoteSplash } from "./PullQuoteSplash";
 import { SectionLayout } from "./SectionLayout";
 import { Hairline } from "../primitives/Hairline";
@@ -82,6 +83,7 @@ export function DetailScroll({ tome }: Props) {
   const hasHistory = !!tome.overview.history;
   const hasConstruction = !!tome.overview.construction;
   const hasLocation = !!tome.overview.location;
+  const hasBody = !!(tome.overview.body && tome.overview.body.trim().length > 0);
   const hasPullQuote = !!tome.overview.pullQuote;
   const indexEntries = useMemo(() => {
     const titles = new Set(tome.subEntries.map((e) => e.title));
@@ -103,11 +105,14 @@ export function DetailScroll({ tome }: Props) {
     if (hasLocation && sectionOffsets.location !== undefined) {
       out.push({ id: "location", label: "PLACES", offsetY: sectionOffsets.location });
     }
+    if (hasBody && sectionOffsets.lore !== undefined) {
+      out.push({ id: "lore", label: "LORE", offsetY: sectionOffsets.lore });
+    }
     if (hasSubEntries && sectionOffsets.index !== undefined) {
       out.push({ id: "index", label: "INDEX", offsetY: sectionOffsets.index });
     }
     return out;
-  }, [hasConstruction, hasFacts, hasHistory, hasLocation, hasSubEntries, sectionOffsets]);
+  }, [hasBody, hasConstruction, hasFacts, hasHistory, hasLocation, hasSubEntries, sectionOffsets]);
 
   const scrollTo = useCallback(
     (offsetY: number) => {
@@ -205,6 +210,12 @@ export function DetailScroll({ tome }: Props) {
                 </View>
               }
             />
+          </View>
+        ) : null}
+
+        {hasBody ? (
+          <View onLayout={onSectionLayout("lore")}>
+            <SectionLayout label="LORE" body={<LoreBody markdown={overview.body!} />} />
           </View>
         ) : null}
 

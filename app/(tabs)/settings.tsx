@@ -10,7 +10,7 @@ import { useTheme, type ThemeMode } from "../../src/theme/useTheme";
 import { useSettings } from "../../src/state/SettingsContext";
 import { useHaptics } from "../../src/hooks/useHaptics";
 
-const PUBLISHER_URL = "https://gamecanvas.ai/";
+const PUBLISHER_URL = "https://amra.world/";
 
 export default function SettingsRoute() {
   const { palette } = useTheme();
@@ -87,7 +87,7 @@ export default function SettingsRoute() {
             accessibilityRole="link"
             accessibilityLabel="Visit Game Canvas website"
           >
-            <Text style={styles.ctaLabel}>Visit gamecanvas.ai →</Text>
+            <Text style={styles.ctaLabel}>Visit Amra.world →</Text>
           </Pressable>
 
           <Text style={styles.colophon}>

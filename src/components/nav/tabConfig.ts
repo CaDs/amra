@@ -26,7 +26,7 @@ export const TABS: Record<TabKey, TabSpec> = {
   lore: {
     key: "lore",
     routeName: "lore",
-    label: "Lore",
+    label: "Codex",
     iconActive: "book",
     iconInactive: "book-outline",
   },

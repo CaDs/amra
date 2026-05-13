@@ -18,7 +18,7 @@ export default function TabsLayout() {
       }}
     >
       <Drawer.Screen name="index" options={{ title: "Home" }} />
-      <Drawer.Screen name="lore" options={{ title: "Lore" }} />
+      <Drawer.Screen name="lore" options={{ title: "Codex" }} />
       <Drawer.Screen name="settings" options={{ title: "Settings" }} />
     </Drawer>
   );

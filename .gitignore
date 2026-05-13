@@ -22,6 +22,7 @@ expo-env.d.ts
 # Generated lore data
 assets/lore.json
 types/lore.generated.ts
+src/data/heroRegistry.generated.ts
 
 # Brainstorm artifacts
 .superpowers/

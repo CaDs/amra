@@ -9,6 +9,7 @@ import Animated, {
 import { onImage, space, type, type Palette } from "../../theme/tokens";
 import { useTheme } from "../../theme/useTheme";
 import { useHaptics } from "../../hooks/useHaptics";
+import { useKenBurns } from "../../hooks/useKenBurns";
 import type { HomeSpread as HomeSpreadData } from "../../types/lore";
 import { FocalImage } from "../primitives/FocalImage";
 import type { HeroImage } from "../../data/heroImages";
@@ -51,6 +52,8 @@ export function HeroSpread({ spread, index, total, scrollY, pageHeight, onOpen, 
     return { opacity, transform: [{ translateY }] };
   });
 
+  const ambientStyle = useKenBurns();
+
   const indexLabel = String(index + 1).padStart(2, "0");
   const totalLabel = String(total).padStart(2, "0");
   const kicker = spread.routeGazetteer ? "ATLAS" : `CHAPTER ${indexLabel} OF ${totalLabel}`;
@@ -58,8 +61,10 @@ export function HeroSpread({ spread, index, total, scrollY, pageHeight, onOpen, 
   return (
     <View style={[styles.page, { height: pageHeight }]}>
       {heroImage ? (
-        <Animated.View style={[StyleSheet.absoluteFill, imageStyle]} pointerEvents="none">
-          <FocalImage source={heroImage.source} {...(heroImage.focal ? { focal: heroImage.focal } : {})} />
+        <Animated.View style={[styles.imageContainer, imageStyle]} pointerEvents="none">
+          <Animated.View style={[styles.ambientCover, ambientStyle]} pointerEvents="none">
+            <FocalImage source={heroImage.source} {...(heroImage.focal ? { focal: heroImage.focal } : {})} />
+          </Animated.View>
           <View style={styles.imageOverlay} />
         </Animated.View>
       ) : null}
@@ -138,6 +143,17 @@ const makeStyles = (palette: Palette, onPhoto: boolean) => {
     },
     chromeTop: {},
     chromeBottom: {},
+    imageContainer: {
+      ...StyleSheet.absoluteFillObject,
+      overflow: "hidden",
+    },
+    ambientCover: {
+      position: "absolute",
+      top: -24,
+      bottom: -24,
+      left: -24,
+      right: -24,
+    },
     imageOverlay: {
       ...StyleSheet.absoluteFillObject,
       backgroundColor: onImage.scrim,

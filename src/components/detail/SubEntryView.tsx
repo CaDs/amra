@@ -1,12 +1,9 @@
 import { useCallback, useEffect, useMemo, useRef } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import Animated, {
-  Extrapolation,
-  interpolate,
   runOnJS,
   useAnimatedReaction,
   useAnimatedScrollHandler,
-  useAnimatedStyle,
   useSharedValue,
 } from "react-native-reanimated";
 import { useNavigation, useRouter } from "expo-router";
@@ -14,8 +11,11 @@ import { space, type, type Palette } from "../../theme/tokens";
 import { useTheme } from "../../theme/useTheme";
 import { useHaptics } from "../../hooks/useHaptics";
 import type { Entry, Tome } from "../../types/lore";
+import { getSubEntryHero } from "../../data/heroImages";
 import { Hairline } from "../primitives/Hairline";
 import { Callouts } from "./Callouts";
+import { DetailHero } from "./DetailHero";
+import { LoreBody } from "./LoreBody";
 import { PullQuoteSplash } from "./PullQuoteSplash";
 import { IndexStrip } from "./IndexStrip";
 import { useResponsive } from "../../hooks/useResponsive";
@@ -67,12 +67,10 @@ export function SubEntryView({ entry, tome, index }: Props) {
     () => tome.subEntries.filter((e) => e.group === entry.title),
     [tome.subEntries, entry.title],
   );
-  const heroH = Math.min(height * 0.34, 300);
-  const heroAnim = useAnimatedStyle(() => {
-    const opacity = interpolate(scrollY.value, [0, heroH], [1, 0.3], Extrapolation.CLAMP);
-    const ty = interpolate(scrollY.value, [0, heroH], [0, -heroH * 0.25], Extrapolation.CLAMP);
-    return { opacity, transform: [{ translateY: ty }] };
-  });
+  const heroHeight = Math.min(height * 0.34, 300);
+  const heroImage = getSubEntryHero(tome.id, entry.id);
+  const kicker = `${tome.overview.title.toUpperCase()} · ${String(index + 1).padStart(2, "0")}`;
+  const hasBody = !!(entry.body && entry.body.trim().length > 0);
 
   return (
     <View style={styles.root}>
@@ -93,16 +91,15 @@ export function SubEntryView({ entry, tome, index }: Props) {
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.measure}>
-        <View style={[styles.heroOuter, { height: heroH, pointerEvents: "none" }]}>
-          <Animated.View style={[styles.heroInner, heroAnim]}>
-            <Text style={styles.kicker}>
-              {tome.overview.title.toUpperCase()} · {String(index + 1).padStart(2, "0")}
-            </Text>
-            <Text style={styles.title}>{entry.title}</Text>
-            {entry.subTitle ? <Text style={styles.subtitle}>{entry.subTitle.toLowerCase()}</Text> : null}
-            <Hairline width={56} style={{ marginTop: space.lg, backgroundColor: palette.dener }} />
-          </Animated.View>
-        </View>
+        <DetailHero
+          title={entry.title}
+          {...(entry.subTitle !== undefined ? { subTitle: entry.subTitle } : {})}
+          kicker={kicker}
+          scrollY={scrollY}
+          height={heroHeight}
+          compact
+          {...(heroImage ? { heroImage } : {})}
+        />
 
         {entry.callouts && entry.callouts.length > 0 ? (
           <View style={styles.section}>
@@ -144,8 +141,15 @@ export function SubEntryView({ entry, tome, index }: Props) {
           </View>
         ) : null}
 
+        {hasBody ? (
+          <View style={styles.section}>
+            <Text style={styles.sectionLabel}>LORE</Text>
+            <LoreBody markdown={entry.body!} />
+          </View>
+        ) : null}
+
         {entry.pullQuote ? (
-          <PullQuoteSplash pullQuote={entry.pullQuote} scrollY={scrollY} startAt={heroH + 600} height={240} />
+          <PullQuoteSplash pullQuote={entry.pullQuote} scrollY={scrollY} startAt={heroHeight + 600} height={240} />
         ) : null}
 
         {children.length > 0 ? (
@@ -182,17 +186,6 @@ const makeStyles = (palette: Palette) =>
     },
     backButtonPressed: { opacity: 0.45 },
     backLabel: { ...type.label, color: palette.textMuted },
-    heroOuter: {
-      width: "100%",
-      alignItems: "flex-start",
-      justifyContent: "flex-start",
-      paddingHorizontal: space.xl,
-      paddingTop: space.giant + space.md,
-    },
-    heroInner: { alignItems: "flex-start", gap: space.xs },
-    kicker: { ...type.label, color: palette.textMuted, marginBottom: space.sm },
-    title: { ...type.hero, color: palette.textPrimary },
-    subtitle: { ...type.subtitle, color: palette.textSecondary, marginTop: space.xs },
     section: {
       paddingHorizontal: space.xl,
       paddingVertical: space.xxl,

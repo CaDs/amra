@@ -9,7 +9,9 @@ import Animated, {
 } from "react-native-reanimated";
 import { ScreenFrame } from "../src/components/primitives/ScreenFrame";
 import { Hairline } from "../src/components/primitives/Hairline";
+import { BackgroundCard, cardTextColors } from "../src/components/primitives/BackgroundCard";
 import { getRegions } from "../src/data/loadLore";
+import { getHeroImage } from "../src/data/heroImages";
 import { space, type, type Palette } from "../src/theme/tokens";
 import { useTheme } from "../src/theme/useTheme";
 import { useHaptics } from "../src/hooks/useHaptics";
@@ -78,25 +80,33 @@ export default function GazetteerRoute() {
         </View>
 
         <View style={styles.grid}>
-          {regions.map((r, i) => (
-            <Pressable
-              key={r.id}
-              style={({ pressed }) => [styles.tile, pressed && styles.tilePressed]}
-              onPress={() => {
-                haptics.medium();
-                router.push({ pathname: "/[tomeId]", params: { tomeId: r.id } });
-              }}
-              accessibilityRole="button"
-              accessibilityLabel={`Open ${r.overview.title}`}
-            >
-              <Text style={styles.tileIndex}>{String(i + 1).padStart(2, "0")}</Text>
-              <Text style={styles.tileTitle}>{r.overview.title}</Text>
-              {r.overview.subTitle ? (
-                <Text style={styles.tileSub}>{r.overview.subTitle}</Text>
-              ) : null}
-              <Text style={styles.tileOpen}>read →</Text>
-            </Pressable>
-          ))}
+          {regions.map((r, i) => {
+            const heroImage = getHeroImage(r.id);
+            const c = cardTextColors(palette, !!heroImage);
+            return (
+              <BackgroundCard
+                key={r.id}
+                {...(heroImage ? { heroImage } : {})}
+                minHeight={180}
+                onPress={() => {
+                  haptics.medium();
+                  router.push({ pathname: "/[tomeId]", params: { tomeId: r.id } });
+                }}
+                accessibilityLabel={`Open ${r.overview.title}`}
+              >
+                <Text style={[styles.tileIndex, { color: c.kicker }]}>
+                  {String(i + 1).padStart(2, "0")}
+                </Text>
+                <Text style={[styles.tileTitle, { color: c.title }]}>{r.overview.title}</Text>
+                {r.overview.subTitle ? (
+                  <Text style={[styles.tileSub, { color: c.subtitle }]} numberOfLines={2}>
+                    {r.overview.subTitle}
+                  </Text>
+                ) : null}
+                <Text style={[styles.tileOpen, { color: c.muted }]}>read →</Text>
+              </BackgroundCard>
+            );
+          })}
         </View>
         </View>
       </Animated.ScrollView>
@@ -116,20 +126,8 @@ const makeStyles = (palette: Palette) =>
     title: { ...type.hero, color: palette.textPrimary },
     lede: { ...type.bodyLg, color: palette.textSecondary, marginTop: space.xs },
     grid: { gap: space.md, marginTop: space.lg },
-    tile: {
-      padding: space.lg,
-      borderWidth: 1,
-      borderColor: palette.borderSubtle,
-      borderRadius: 8,
-      backgroundColor: palette.bgSurface,
-      gap: space.xs,
-    },
-    tilePressed: {
-      opacity: 0.55,
-      borderColor: palette.dener,
-    },
-    tileIndex: { ...type.label, color: palette.dener },
-    tileTitle: { ...type.title, fontSize: 22, lineHeight: 26, color: palette.textPrimary },
-    tileSub: { ...type.body, color: palette.textSecondary, fontSize: 14, lineHeight: 20 },
-    tileOpen: { ...type.label, color: palette.textMuted, marginTop: space.xs },
+    tileIndex: { ...type.label },
+    tileTitle: { ...type.title, fontSize: 22, lineHeight: 26 },
+    tileSub: { ...type.body, fontSize: 14, lineHeight: 20 },
+    tileOpen: { ...type.label, marginTop: space.xs },
   });
